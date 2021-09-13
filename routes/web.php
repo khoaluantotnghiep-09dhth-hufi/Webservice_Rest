@@ -23,6 +23,9 @@ $router->put('/categories/{id}', 'CategoryController@update');
 //Object
 $router->get('/objects', 'ObjectsController@index');
 $router->get('/objects/{id}', 'ObjectsController@show');
+$router->post('/objects', 'ObjectsController@store');
+$router->put('/objects/{id}', 'ObjectsController@update');
+$router->delete('/objects/{id}', 'ObjectsController@destroy');
 //Color
 $router->get('/color', 'ColorController@index');
 $router->post('/color', 'ColorController@store');

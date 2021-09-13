@@ -21,8 +21,15 @@ class ObjectsController extends Controller
         return response()->json($result);
     }
     //Tạo một Object
-    public function store($request)
+    public function store(Request $request)
     {
+        DB::table('tbl_object')->insert(
+            ["id" => $request->id,
+             "name" => $request->name,
+           
+            ]
+        );
+        return response()->json($request);
     }
     //Lấy một Object theo $id
     public function show($id)
@@ -40,11 +47,23 @@ class ObjectsController extends Controller
         return json_encode($result, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
     //Cập nhật một Object theo $id
-    public function update($id)
+    public function update(Request $request)
     {
+        DB::table('tbl_object')
+            ->where('id', $request->id)
+            ->update(
+                [
+                    'name' => $request->name,
+                    
+                ]
+                
+        );
+        return response()->json($request);
     }
     //Xóa một Object theo $id
     public function destroy($id)
     {
+        DB::table('tbl_object')->where('id', '=', $id)->delete();
+        return response()->json($id);
     }
 }
