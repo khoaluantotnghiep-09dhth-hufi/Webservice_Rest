@@ -23,8 +23,15 @@ class CategoryController extends Controller
         return response()->json($result);
     }
     //Tạo một Category
-    public function store($request)
+    public function store( Request $request)
     {
+        DB::table('tbl_category')->insert(
+            ["id" => $request->id,
+             "name" => $request->name,
+            "id_sectors" => $request->id_sectors,
+            ]
+        );
+        return response()->json($request);
     }
     //Lấy một Category theo $id
     public function show($id)
@@ -38,11 +45,23 @@ class CategoryController extends Controller
         return response()->json($result);
     }
     //Cập nhật một Category theo $id
-    public function update($id)
+    public function update(Request $request)
     {
+        DB::table('tbl_category')
+            ->where('id', $request->id)
+            ->update(
+                [
+                    'name' => $request->name,
+                    'id_sectors' => $request->id_sectors,
+                ]
+                
+        );
+        return response()->json($request);
     }
     //Xóa một Category theo $id
     public function destroy($id)
     {
+       DB::table('tbl_category')->where('id', '=', $id)->delete();
+        return response()->json($id);
     }
 }

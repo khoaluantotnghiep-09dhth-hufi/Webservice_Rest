@@ -17,12 +17,17 @@ $router->get('/', 'AuthController@index');
 //Category
 $router->get('/categories', 'CategoryController@index');
 $router->get('/categories/{id}', 'CategoryController@show');
-
-
+$router->post('/categories', 'CategoryController@store');
+$router->delete('/categories/{id}', 'CategoryController@destroy');
+$router->put('/categories/{id}', 'CategoryController@update');
 //Object
 $router->get('/objects', 'ObjectsController@index');
 $router->get('/objects/{id}', 'ObjectsController@show');
-
+//Color
+$router->get('/color', 'ColorController@index');
+$router->post('/color', 'ColorController@store');
+$router->delete('/color/{id}', 'ColorController@destroy');
+$router->put('/color/{id}', 'ColorController@update');
 //Sector
 $router->get('/sectors', 'SectorController@index');
 
