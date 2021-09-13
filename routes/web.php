@@ -32,7 +32,8 @@ $router->get('/users', 'CustomerController@index');
 //Products
 $router->get('/products', 'ProductController@index');
 
-
+//Bill_Customer
+$router->get('/bill-customer', 'Bill_CustomerController@index');
 
 
 // $router->post('/login', 'AuthController@postLogin');
