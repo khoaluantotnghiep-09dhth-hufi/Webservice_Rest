@@ -40,6 +40,10 @@ $router->get('/products', 'ProductController@index');
 //Bill_Customer
 $router->get('/bill-customer', 'Bill_CustomerController@index');
 
+//run_test
+$router->get('/test', function(){
+    return "Test successful";
+});
 
 // $router->post('/login', 'AuthController@postLogin');
 // $router->group(['middleware' => 'auth:api'], function ($app) {
