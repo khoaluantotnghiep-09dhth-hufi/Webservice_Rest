@@ -20,6 +20,11 @@ class ObjectsController extends Controller
             ->get();
         return response()->json($result);
     }
+    public function index2(Request $request)
+    {
+       $rs = DB::table('tbl_object')->where('id', $request->id)->first();
+       return response()->json($rs);
+    }
     //Tạo một Object
     public function store(Request $request)
     {
@@ -45,6 +50,7 @@ class ObjectsController extends Controller
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Cache-Control, Pragma, Authorization, Accept, Accept-Encoding");
         return json_encode($result, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        
     }
     //Cập nhật một Object theo $id
     public function update(Request $request)

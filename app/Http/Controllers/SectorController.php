@@ -15,20 +15,46 @@ class SectorController extends Controller
         $result = DB::table('tbl_sectors')->select('*')->get();
         return response()->json($result);
     }
-    //Tạo một Sector
-    public function store($request)
+    public function index2(Request $request)
     {
+       $rs = DB::table('tbl_sectors')->where('id', $request->id)->first();
+       return response()->json($rs);
+    }
+    //Tạo một Sector
+    public function store(Request $request)
+    {
+        DB::table('tbl_sectors')->insert(
+            ["id" => $request->id,
+             "name" => $request->name,
+                "id_object" => $request->id_object,
+            ]
+        );
+        return response()->json($request);
     }
     //Lấy một Sector theo $id
-    public function show($id)
+    public function show(Request $request)
     {
+        $rs = DB::table('tbl_sectors')->where('id', $request->id)->first();
+       return response()->json($rs);
     }
     //Cập nhật một Sector theo $id
-    public function update($id)
+    public function update(Request $request)
     {
+        DB::table('tbl_sectors')
+            ->where('id', $request->id)
+            ->update(
+                [
+                    'name' => $request->name,
+                    'id_object' =>$request->id_object,
+                ]
+                
+        );
+        return response()->json($request);
     }
     //Xóa một Sector theo $id
     public function destroy($id)
     {
+        DB::table('tbl_sectors')->where('id', '=', $id)->delete();
+        return response()->json($id);
     }
 }
