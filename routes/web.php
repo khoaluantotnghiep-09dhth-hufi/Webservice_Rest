@@ -42,9 +42,14 @@ $router->get('/products', 'ProductController@index');
 
 //Bill_Customer
 $router->get('/bill-customer', 'Bill_CustomerController@index');
-
+//Promotion
+$router->get('/promotions', 'PromotionController@index');
+$router->get('/promotions/{id}', 'PromotionController@show');
+$router->post('/promotions', 'PromotionController@store');
+$router->delete('/promotions/{id}', 'PromotionController@destroy');
+$router->put('/promotions/{id}', 'PromotionController@update');
 //run_test
-$router->get('/test', function(){
+$router->get('/test', function () {
     return "Test successful";
 });
 
@@ -56,4 +61,3 @@ $router->get('/test', function(){
 //         ]);
 //     });
 // });
-
