@@ -65,6 +65,13 @@ $router->get('/staffs/{id}', 'StaffController@show');
 $router->post('/staffs', 'StaffController@store');
 $router->delete('/staffs/{id}', 'StaffController@destroy');
 $router->put('/staffs/{id}', 'StaffController@update');
+
+//news
+$router->get('/news', 'NewsController@index');
+$router->get('/news/{id}', 'NewsController@show');
+$router->post('/news', 'NewsController@store');
+$router->delete('/news/{id}', 'NewsController@destroy');
+$router->put('/news/{id}', 'NewsController@update');
 //run_test
 $router->get('/test', function () {
     return "Test successful";
