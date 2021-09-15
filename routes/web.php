@@ -45,9 +45,12 @@ $router->get('/sectors/{id}', 'SectorController@index2');
 $router->post('/sectors', 'SectorController@store');
 $router->delete('/sectors/{id}', 'SectorController@destroy');
 $router->put('/sectors/{id}', 'SectorController@update');
-//User
-$router->get('/users', 'CustomerController@index');
-
+//customer
+$router->get('/customer', 'CustomerController@index');
+$router->get('/customer/{id}', 'CustomerController@show');
+$router->post('/customer', 'CustomerController@store');
+$router->put('/customer/{id}', 'CustomerController@update');
+$router->delete('/customer/{id}', 'CustomerController@destroy');
 //Products
 $router->get('/products', 'ProductController@index');
 

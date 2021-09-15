@@ -31,6 +31,7 @@ class CustomerController extends Controller
         DB::table('tbl_customer')
         ->insert(
             [
+                'id' => $request->id,
                 'name' => $request->name,
                 'address' => $request->address,
                 'phone' => $request->phone,
