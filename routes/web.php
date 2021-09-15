@@ -29,6 +29,7 @@ $router->put('/objects/{id}', 'ObjectsController@update');
 $router->delete('/objects/{id}', 'ObjectsController@destroy');
 //Color
 $router->get('/color', 'ColorController@index');
+$router->get('/color/{id}', 'ColorController@show');
 $router->post('/color', 'ColorController@store');
 $router->delete('/color/{id}', 'ColorController@destroy');
 $router->put('/color/{id}', 'ColorController@update');
