@@ -33,6 +33,12 @@ $router->get('/color/{id}', 'ColorController@show');
 $router->post('/color', 'ColorController@store');
 $router->delete('/color/{id}', 'ColorController@destroy');
 $router->put('/color/{id}', 'ColorController@update');
+//Size
+$router->get('/size', 'SizeController@index');
+$router->get('/size/{id}', 'SizeController@show');
+$router->post('/size', 'SizeController@store');
+$router->delete('/size/{id}', 'SizeController@destroy');
+$router->put('/size/{id}', 'SizeController@update');
 //Sector
 $router->get('/sectors', 'SectorController@index');
 $router->get('/sectors/{id}', 'SectorController@index2');
