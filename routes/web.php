@@ -52,6 +52,12 @@ $router->get('/promotions/{id}', 'PromotionController@show');
 $router->post('/promotions', 'PromotionController@store');
 $router->delete('/promotions/{id}', 'PromotionController@destroy');
 $router->put('/promotions/{id}', 'PromotionController@update');
+//staff
+$router->get('/staffs', 'StaffController@index');
+$router->get('/staffs/{id}', 'StaffController@show');
+$router->post('/staffs', 'StaffController@store');
+$router->delete('/staffs/{id}', 'StaffController@destroy');
+$router->put('/staffs/{id}', 'StaffController@update');
 //run_test
 $router->get('/test', function () {
     return "Test successful";
