@@ -53,7 +53,10 @@ $router->put('/customer/{id}', 'CustomerController@update');
 $router->delete('/customer/{id}', 'CustomerController@destroy');
 //Products
 $router->get('/products', 'ProductController@index');
-
+//All Bill
+$router->get('/bills', 'BillController@index');
+$router->delete('/bills/{id}', 'BillController@destroy');
+$router->put('/bills/{id}', 'BillController@update');
 //Bill_Customer
 $router->get('/bill-customer', 'Bill_CustomerController@index');
 //Promotion
