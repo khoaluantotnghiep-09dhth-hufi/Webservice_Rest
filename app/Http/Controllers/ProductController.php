@@ -15,21 +15,25 @@ class ProductController extends Controller
             ->join('tbl_category as c', 'c.id', '=', 'product.id_category')
             ->join('tbl_promotion as pp', 'pp.id', '=', 'product.id_promotion')
             ->join('tbl_product_info as ppf', 'ppf.id_product', '=', 'product.id')
-            ->select('product.id',
+            ->select(
+                'product.id',
                 'product.name_product',
                 'product.price',
                 'product.description',
                 'product.like_product',
                 'product.id_category',
-                'c.name', 'product.image',
+                'c.name',
+                'product.image',
                 'product.id_promotion',
-                'pp.name', 'pp.date_start',
+                'pp.name',
+                'pp.date_start',
                 'pp.date_end',
-                'pp.desciption',
+                'pp.desciption as percentSale',
                 'ppf.id',
                 'ppf.id_size',
                 'ppf.id_color',
-                'ppf.quantity as quanityAll')->orderBy('product.id')
+                'ppf.quantity as quanityAll'
+            )->orderBy('product.id')
             ->get();
         return response()->json($result);
     }
@@ -51,6 +55,7 @@ class ProductController extends Controller
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
                 'tbl_promotion.name as namePromotion',
+                'tbl_promotion.desciption as percentSale',
                 'tbl_product_info.quantity',
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor'
