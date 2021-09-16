@@ -48,12 +48,12 @@ class ProductController extends Controller
                 'tbl_product.description',
                 'tbl_product.like_product',
                 'tbl_product.dislike_product',
-                'tbl_product.id_category',
+                'tbl_category.name as nameCategory',
                 'tbl_product.image',
-                'tbl_product.id_promotion',
+                'tbl_promotion.name as namePromotion',
                 'tbl_product_info.quantity',
-                'tbl_product_info.id_size',
-                'tbl_product_info.id_color'
+                'tbl_size.name as nameSize',
+                'tbl_color.name as nameColor'
             )->orderBy('tbl_product.id')
             ->get();
         return response()->json($result);
