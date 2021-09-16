@@ -55,6 +55,7 @@ $router->delete('/customer/{id}', 'CustomerController@destroy');
 $router->get('/products', 'ProductController@index');
 //All Bill
 $router->get('/bills', 'BillController@index');
+$router->get('/bills/{id}', 'BillController@show');
 $router->delete('/bills/{id}', 'BillController@destroy');
 $router->put('/bills/{id}', 'BillController@update');
 //Bill_Customer
