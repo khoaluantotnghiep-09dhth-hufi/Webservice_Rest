@@ -35,7 +35,8 @@ class BillController extends Controller
             ->where('id', $request->id)
             ->update(
                 [
-                    'status' => (int) $request->name,
+                    'status' => (int) $request->nameStatus,
+                    'date'=> $request->nameDate,
                 ]
 
             );
