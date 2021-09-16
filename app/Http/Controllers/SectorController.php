@@ -17,6 +17,7 @@ class SectorController extends Controller
                 'tbl_sectors.id',
                 'tbl_sectors.name',
                 'tbl_object.name as nameObject'
+                , 'tbl_sectors.id_object'
             )
             ->get();
         return response()->json($result);
