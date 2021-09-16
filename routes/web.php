@@ -79,6 +79,12 @@ $router->get('/news/{id}', 'NewsController@show');
 $router->post('/news', 'NewsController@store');
 $router->delete('/news/{id}', 'NewsController@destroy');
 $router->put('/news/{id}', 'NewsController@update');
+//order
+$router->get('/orders', 'OrderController@index');
+$router->get('/orders/{id}', 'OrderController@show');
+$router->post('/orders', 'OrderController@store');
+$router->delete('/orders/{id}', 'OrderController@destroy');
+$router->put('/orders/{id}', 'OrderController@update');
 //run_test
 $router->get('/test', function () {
     return "Test successful";
