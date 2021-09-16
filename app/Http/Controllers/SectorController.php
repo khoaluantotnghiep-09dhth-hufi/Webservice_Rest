@@ -2,7 +2,6 @@
 //Kiểm tra class thêm vào chưa
 namespace App\Http\Controllers;
 
-use App\Models\Sector;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,20 +11,28 @@ class SectorController extends Controller
     public function index()
     {
         // $result = Sector::all();
-        $result = DB::table('tbl_sectors')->select('*')->get();
+        $result = DB::table('tbl_sectors')
+            ->join('tbl_object', 'tbl_sectors.id_object', '=', 'tbl_object.id')
+            ->select(
+                'tbl_sectors.id',
+                'tbl_sectors.name',
+                'tbl_object.name as nameObject'
+            )
+            ->get();
         return response()->json($result);
     }
     public function index2(Request $request)
     {
-       $rs = DB::table('tbl_sectors')->where('id', $request->id)->first();
-       return response()->json($rs);
+        $rs = DB::table('tbl_sectors')->where('id', $request->id)->first();
+        return response()->json($rs);
     }
     //Tạo một Sector
     public function store(Request $request)
     {
         DB::table('tbl_sectors')->insert(
-            ["id" => $request->id,
-             "name" => $request->name,
+            [
+                "id" => $request->id,
+                "name" => $request->name,
                 "id_object" => $request->id_object,
             ]
         );
@@ -35,7 +42,7 @@ class SectorController extends Controller
     public function show(Request $request)
     {
         $rs = DB::table('tbl_sectors')->where('id', $request->id)->first();
-       return response()->json($rs);
+        return response()->json($rs);
     }
     //Cập nhật một Sector theo $id
     public function update(Request $request)
@@ -45,10 +52,10 @@ class SectorController extends Controller
             ->update(
                 [
                     'name' => $request->name,
-                    'id_object' =>$request->id_object,
+                    'id_object' => $request->id_object,
                 ]
-                
-        );
+
+            );
         return response()->json($request);
     }
     //Xóa một Sector theo $id

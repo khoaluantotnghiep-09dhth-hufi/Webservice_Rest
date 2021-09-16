@@ -16,7 +16,15 @@ class NewsController extends Controller
 
         //     ->select('tbl_sectors.id','tbl_sectors.name','tbl_category.id','tbl_category.name')
         //     ->get();
-        $result = DB::table('tbl_news')->select('*')->get();
+        $result = DB::table('tbl_news')
+            ->join('tbl_staff', 'tbl_staff.id', '=', 'tbl_news.id_staff')
+            ->select('tbl_news.id',
+                'tbl_news.title',
+                'tbl_news.date',
+                'tbl_news.description',
+                'tbl_staff.name as nameStaff',
+                'tbl_news.image')
+            ->get();
         return response()->json($result);
     }
     //Tạo một Category
@@ -29,7 +37,7 @@ class NewsController extends Controller
                 "description" => $request->description,
                 "id_staff" => $request->id_staff,
                 "image" => $request->image,
-               
+
             ]
         );
         return response()->json($request);
@@ -52,7 +60,7 @@ class NewsController extends Controller
                     "description" => $request->description,
                     "id_staff" => $request->id_staff,
                     "image" => $request->image,
-                    
+
                 ]
 
             );

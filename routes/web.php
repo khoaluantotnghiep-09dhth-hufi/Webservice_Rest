@@ -46,7 +46,8 @@ $router->post('/sectors', 'SectorController@store');
 $router->delete('/sectors/{id}', 'SectorController@destroy');
 $router->put('/sectors/{id}', 'SectorController@update');
 //Products
-$router->get('/products', 'ProductController@index');
+// $router->get('/products', 'ProductController@index');
+$router->get('/products', 'ProductController@index2');
 //All Bill
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');
