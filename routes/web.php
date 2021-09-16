@@ -45,12 +45,6 @@ $router->get('/sectors/{id}', 'SectorController@index2');
 $router->post('/sectors', 'SectorController@store');
 $router->delete('/sectors/{id}', 'SectorController@destroy');
 $router->put('/sectors/{id}', 'SectorController@update');
-//customer
-$router->get('/customer', 'CustomerController@index');
-$router->get('/customer/{id}', 'CustomerController@show');
-$router->post('/customer', 'CustomerController@store');
-$router->put('/customer/{id}', 'CustomerController@update');
-$router->delete('/customer/{id}', 'CustomerController@destroy');
 //Products
 $router->get('/products', 'ProductController@index');
 //All Bill
@@ -66,13 +60,18 @@ $router->get('/promotions/{id}', 'PromotionController@show');
 $router->post('/promotions', 'PromotionController@store');
 $router->delete('/promotions/{id}', 'PromotionController@destroy');
 $router->put('/promotions/{id}', 'PromotionController@update');
+//customer
+$router->get('/customers', 'CustomerController@index');
+$router->get('/customers/{id}', 'CustomerController@show');
+$router->post('/customers', 'CustomerController@store');
+$router->put('/customers/{id}', 'CustomerController@update');
+$router->delete('/customers/{id}', 'CustomerController@destroy');
 //staff
 $router->get('/staffs', 'StaffController@index');
 $router->get('/staffs/{id}', 'StaffController@show');
 $router->post('/staffs', 'StaffController@store');
 $router->delete('/staffs/{id}', 'StaffController@destroy');
 $router->put('/staffs/{id}', 'StaffController@update');
-
 //news
 $router->get('/news', 'NewsController@index');
 $router->get('/news/{id}', 'NewsController@show');
