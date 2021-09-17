@@ -23,7 +23,8 @@ class NewsController extends Controller
                 'tbl_news.date',
                 'tbl_news.description',
                 'tbl_staff.name as nameStaff',
-                'tbl_news.image')
+                'tbl_news.image',
+                'tbl_news.sub_titile')
             ->get();
         return response()->json($result);
     }
