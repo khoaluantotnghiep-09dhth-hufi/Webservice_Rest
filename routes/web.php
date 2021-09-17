@@ -85,6 +85,12 @@ $router->get('/orders/{id}', 'OrderController@show');
 $router->post('/orders', 'OrderController@store');
 $router->delete('/orders/{id}', 'OrderController@destroy');
 $router->put('/orders/{id}', 'OrderController@update');
+// order info
+$router->get('/orders-info', 'OrderInfoController@index');
+$router->get('/orders-info/{id}', 'OrderInfoController@show');
+$router->post('/orders-info', 'OrderController@store');
+$router->delete('/orders-info/{id}', 'OrderController@destroy');
+$router->put('/orders-info/{id}', 'OrderController@update');
 //run_test
 $router->get('/test', function () {
     return "Test successful";

@@ -20,8 +20,9 @@ class OrderController extends Controller
     {
         DB::table('tbl_order')->insert(
             [
+                // Carbon::createFromFormat('d/m/Y', $request->date_order)->format('Y-m-d'),
                 "id" => $request->id,
-                "date_order" => Carbon::createFromFormat('d/m/Y', $request->date_order)->format('Y-m-d'),
+                "date_order" => $request->date_order,
                 'name_warehouse' => $request->name_warehouse,
                 'status' => $request->status
             ]
@@ -31,6 +32,7 @@ class OrderController extends Controller
     //Lấy một Product theo $id
     public function show($id)
     {
+        
     }
     //Cập nhật một Product theo $id
     public function update(Request $request)
