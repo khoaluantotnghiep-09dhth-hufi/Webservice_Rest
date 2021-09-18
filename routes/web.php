@@ -49,6 +49,8 @@ $router->put('/sectors/{id}', 'SectorController@update');
 $router->get('/products-category', 'ProductForCategoryController@index');
 //
 $router->get('/products', 'ProductController@index2');
+$router->get('/products/{id}', 'ProductController@show');
+
 //All Bill
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');
