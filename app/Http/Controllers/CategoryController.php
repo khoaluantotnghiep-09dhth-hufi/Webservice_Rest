@@ -28,7 +28,7 @@ class CategoryController extends Controller
     {
         DB::table('tbl_category')->insert(
             ["id" => $request->id,
-                "name" => $request->name,
+                "name" => $request->nameCategory,
                 "id_sectors" => $request->id_sectors,
             ]
         );

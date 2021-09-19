@@ -16,8 +16,7 @@ class SectorController extends Controller
             ->select(
                 'tbl_sectors.id',
                 'tbl_sectors.name',
-                'tbl_object.name as nameObject'
-                , 'tbl_sectors.id_object'
+                'tbl_object.name as nameObject', 
             )
             ->get();
         return response()->json($result);
@@ -33,7 +32,7 @@ class SectorController extends Controller
         DB::table('tbl_sectors')->insert(
             [
                 "id" => $request->id,
-                "name" => $request->name,
+                "name" => $request->nameSector,
                 "id_object" => $request->id_object,
             ]
         );
@@ -49,7 +48,7 @@ class SectorController extends Controller
     public function update(Request $request)
     {
         DB::table('tbl_sectors')
-            ->where('id', $request->id)
+            ->where('id', $request->idItem)
             ->update(
                 [
                     'name' => $request->name,
