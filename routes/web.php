@@ -22,8 +22,7 @@ $router->delete('/categories/{id}', 'CategoryController@destroy');
 $router->put('/categories/{id}', 'CategoryController@update');
 //Object
 $router->get('/objects', 'ObjectsController@index');
-$router->get('/objects/{id}', 'ObjectsController@index2');
-// $router->get('/objects/{id}', 'ObjectsController@show');
+$router->get('/objects/{id}', 'ObjectsController@show');
 $router->post('/objects', 'ObjectsController@store');
 $router->put('/objects/{id}', 'ObjectsController@update');
 $router->delete('/objects/{id}', 'ObjectsController@destroy');
