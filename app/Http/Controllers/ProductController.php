@@ -59,14 +59,15 @@ class ProductController extends Controller
             )->orderBy('tbl_product.id')
             ->get();
         return response()->json($result);
+      
     }
     //Tạo một Product
     public function store(Request $request)
     {
         DB::table('tbl_product')->insert(
             [
-                "id" => $request->id_product,
-                "name" => $request->name,
+                "id" => $request->id,
+                "name" => $request->nameProduct,
                 "price" => $request->price,
                 "description" => $request->description,
                 "like_product" => "0",
@@ -74,17 +75,6 @@ class ProductController extends Controller
                 "id_category" => $request->id_category,
                 "image" => $request->image,
                 "id_promotion" => $request->id_promotion,
-
-            ]
-        );
-        DB::table('tbl_product_info')->insert(
-            [
-              
-                "id" => $request->id_product_info,
-                "id_product" => $request->id_product,
-                "id_size" => $request->id_size,
-                "id_color" => $request->id_color,
-                "quantity" => $request->quantity,
             ]
         );
         return response()->json($request);

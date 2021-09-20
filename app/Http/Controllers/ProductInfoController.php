@@ -19,8 +19,18 @@ class ProductInfoController extends Controller
 
         return response()->json($result,200);
     }
-    public function store($request)
+    public function store(Request $request)
     {
+        DB::table('tbl_product_info')->insert(
+            [
+                "id" => $request->id,
+                "id_product" => $request->id_product,
+                "id_size" => $request->id_size,
+                "id_color" => $request->id_color,
+                "quantity" => $request->quantity
+            ]
+        );
+        return response()->json($request);
     }
     public function show($id)
     {

@@ -48,8 +48,9 @@ $router->put('/sectors/{id}', 'SectorController@update');
 //Products of Category
 $router->get('/products-category', 'ProductForCategoryController@index');
 $router->get('/product-sizes/{id}', 'ProductForCategoryController@show');
-
-
+$router->post('/products', 'ProductController@store');
+//product info
+$router->post('/product-info', 'ProductInfoController@store');
 //Product of Staff
 $router->get('/products', 'ProductController@index2');
 $router->get('/products/{id}', 'ProductController@show');
