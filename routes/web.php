@@ -45,9 +45,12 @@ $router->get('/sectors/{id}', 'SectorController@show');
 $router->post('/sectors', 'SectorController@store');
 $router->delete('/sectors/{id}', 'SectorController@destroy');
 $router->put('/sectors/{id}', 'SectorController@update');
-//Products
+//Products of Category
 $router->get('/products-category', 'ProductForCategoryController@index');
-//
+$router->get('/products/{id_product}/sizes/{id_size}', 'ProductForCategoryController@show');
+
+
+//Product of Staff
 $router->get('/products', 'ProductController@index2');
 $router->get('/products/{id}', 'ProductController@show');
 
