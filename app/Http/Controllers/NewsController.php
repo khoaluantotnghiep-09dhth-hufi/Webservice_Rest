@@ -24,7 +24,7 @@ class NewsController extends Controller
                 'tbl_news.description',
                 'tbl_staff.name as nameStaff',
                 'tbl_news.image',
-                'tbl_news.sub_titile')
+                'tbl_news.sub_title')
             ->get();
         return response()->json($result);
     }
@@ -32,13 +32,14 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         DB::table('tbl_news')->insert(
-            ["id" => $request->id,
+            [
+                "id" => $request->id,
                 "title" => $request->title,
                 "date" => $request->date,
                 "description" => $request->description,
                 "id_staff" => $request->id_staff,
                 "image" => $request->image,
-
+                "sub_title" => $request->sub_title,
             ]
         );
         return response()->json($request);
@@ -46,14 +47,14 @@ class NewsController extends Controller
     //Lấy một Category theo $id
     public function show(Request $request)
     {
-        $rs = DB::table('tbl_news')->where('id', $request->id)->first();
-        return response()->json($rs);
+        $result = DB::table('tbl_news')->where('id', $request->id)->first();
+        return response()->json($result);
     }
     //Cập nhật một Category theo $id
     public function update(Request $request)
     {
         DB::table('tbl_news')
-            ->where('id', $request->id)
+            ->where('id', $request->idItem)
             ->update(
                 [
                     "title" => $request->title,
@@ -61,7 +62,7 @@ class NewsController extends Controller
                     "description" => $request->description,
                     "id_staff" => $request->id_staff,
                     "image" => $request->image,
-
+                    "sub_title" => $request->sub_title,
                 ]
 
             );
