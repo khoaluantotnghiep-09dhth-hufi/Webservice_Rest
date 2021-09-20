@@ -32,7 +32,7 @@ class CustomerController extends Controller
         ->insert(
             [
                 'id' => $request->id,
-                'name' => $request->name,
+                'name' => $request->nameCustomer,
                 'address' => $request->address,
                 'phone' => $request->phone,
                 'image' => $request->image,
@@ -47,26 +47,26 @@ class CustomerController extends Controller
     {
         $result = DB::table("tbl_customer")
         ->where("id", "=", $id)
-        ->select('tbl_customer.id')
+        // ->select('tbl_customer.id')
         ->get();
         return response()->json($result);
     }
     //Cập nhật một Customer theo $id
-    public function update(Request $id)
+    public function update(Request $request)
     {
         DB::table('tbl_customer')
-        ->where('id', $id->id)
+        ->where('id', $request->idItem)
         ->update(
             [
-                'name' => $id->name,
-                'address' => $id->address,
-                'phone' => $id->phone,
-                'image' => $id->image,
-                'password' => $id->password,
-                'email' => $id->email,
+                'name' => $request->nameCustomer,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'image' => $request->image,
+                'password' => $request->password,
+                'email' => $request->email,
             ]
         );
-        return response()->json($id);
+        return response()->json($request);
     }
     //Xóa một Customer theo $id
     public function destroy($id)
