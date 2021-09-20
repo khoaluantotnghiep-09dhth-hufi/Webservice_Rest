@@ -18,7 +18,7 @@ class CategoryController extends Controller
         //     ->get();
         $result = DB::table('tbl_category')->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
             ->select(
-                'tbl_category.id', 'tbl_category.name', 'tbl_sectors.name as nameSector','tbl_category.id_sectors'
+                'tbl_category.id', 'tbl_category.name', 'tbl_sectors.name as nameSector', 'tbl_category.id_sectors'
             )
             ->get();
         return response()->json($result);
@@ -29,7 +29,7 @@ class CategoryController extends Controller
         DB::table('tbl_category')->insert(
             ["id" => $request->id,
                 "name" => $request->nameCategory,
-                "id_sectors" => $request->id_sectors,
+                "id_sectors" => $request->id_sector,
             ]
         );
         return response()->json($request);
@@ -52,7 +52,7 @@ class CategoryController extends Controller
             ->where('id', $request->id)
             ->update(
                 [
-                    'name' => $request->name,
+                    'name' => $request->nameCategory,
                     'id_sectors' => $request->id_sectors,
                 ]
 
