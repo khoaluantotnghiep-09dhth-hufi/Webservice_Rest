@@ -43,14 +43,14 @@ class ProductForCategoryController extends Controller
         return response()->json($request);
     }
     //Lấy một Product theo $id
-    public function show($id_product, $id_size)
+    public function show($id)
     {
         $result =  DB::table("tbl_product")
             ->join('tbl_product_info', "tbl_product.id", "=", 'tbl_product_info.id_product')
             ->join('tbl_color', "tbl_color.id", "=", 'tbl_product_info.id_color')
             ->join('tbl_size', "tbl_size.id", "=", 'tbl_product_info.id_size')
-            ->where("tbl_product.id", "=", $id_product)
-            ->where("tbl_size.id", "=", $id_size)
+            ->where("tbl_product.id", "=", $id)
+
             // ->select("tbl_color.name", "tbl_size.name")
             ->select("tbl_color.name as nameColor","tbl_size.name as nameSize",DB::raw('sum(tbl_product_info.quantity) as totalQuantityProduct'),)
             ->groupBy("tbl_color.name","tbl_size.name")
