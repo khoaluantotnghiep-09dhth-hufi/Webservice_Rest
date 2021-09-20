@@ -49,10 +49,10 @@ class SectorController extends Controller
     public function update(Request $request)
     {
         DB::table('tbl_sectors')
-            ->where('id', $request->idItem)
+            ->where('id', $request->id)
             ->update(
                 [
-                    'name' => $request->name,
+                    'name' => $request->nameSector,
                     'id_object' => $request->id_object,
                 ]
 
