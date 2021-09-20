@@ -40,16 +40,17 @@ $router->delete('/size/{id}', 'SizeController@destroy');
 $router->put('/size/{id}', 'SizeController@update');
 //Sector
 $router->get('/sectors', 'SectorController@index');
-$router->get('/sectors/{id}', 'SectorController@index2');
+$router->get('/sectors/{id}', 'SectorController@show');
+// $router->get('/sectors/{id}', 'SectorController@index2');
 $router->post('/sectors', 'SectorController@store');
 $router->delete('/sectors/{id}', 'SectorController@destroy');
 $router->put('/sectors/{id}', 'SectorController@update');
 //Products
 $router->get('/products-category', 'ProductForCategoryController@index');
-//product
+//
 $router->get('/products', 'ProductController@index2');
 $router->get('/products/{id}', 'ProductController@show');
-$router->post('/products', 'ProductController@store');
+
 //All Bill
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');

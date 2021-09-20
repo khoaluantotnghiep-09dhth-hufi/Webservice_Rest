@@ -16,7 +16,8 @@ class SectorController extends Controller
             ->select(
                 'tbl_sectors.id',
                 'tbl_sectors.name',
-                'tbl_object.name as nameObject', 
+                'tbl_object.name as nameObject',
+                'tbl_sectors.id_object'
             )
             ->get();
         return response()->json($result);
@@ -39,9 +40,9 @@ class SectorController extends Controller
         return response()->json($request);
     }
     //Lấy một Sector theo $id
-    public function show(Request $request)
+    public function show($id)
     {
-        $rs = DB::table('tbl_sectors')->where('id', $request->id)->first();
+        $rs = DB::table('tbl_sectors')->where('id', $id)->get();
         return response()->json($rs);
     }
     //Cập nhật một Sector theo $id
