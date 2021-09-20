@@ -24,7 +24,7 @@ class NewsController extends Controller
                 'tbl_news.description',
                 'tbl_staff.name as nameStaff',
                 'tbl_news.image',
-                'tbl_news.sub_title')
+                'tbl_news.subtitle')
             ->get();
         return response()->json($result);
     }
@@ -34,12 +34,12 @@ class NewsController extends Controller
         DB::table('tbl_news')->insert(
             [
                 "id" => $request->id,
-                "title" => $request->title,
+                "title" => $request->titleName,
                 "date" => $request->date,
                 "description" => $request->description,
                 "id_staff" => $request->id_staff,
                 "image" => $request->image,
-                "sub_title" => $request->sub_title,
+                "subtitle" => $request->subtitle,
             ]
         );
         return response()->json($request);
@@ -57,12 +57,12 @@ class NewsController extends Controller
             ->where('id', $request->idItem)
             ->update(
                 [
-                    "title" => $request->title,
+                    "title" => $request->titleName,
                     "date" => $request->date,
                     "description" => $request->description,
                     "id_staff" => $request->id_staff,
                     "image" => $request->image,
-                    "sub_title" => $request->sub_title,
+                    "subtitle" => $request->subtitle,
                 ]
 
             );
