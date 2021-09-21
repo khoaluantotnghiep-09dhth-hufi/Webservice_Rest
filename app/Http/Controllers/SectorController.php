@@ -33,7 +33,7 @@ class SectorController extends Controller
         DB::table('tbl_sectors')->insert(
             [
                 "id" => $request->id,
-                "name" => $request->nameSector,
+                "name" => $request->name,
                 "id_object" => $request->id_object,
             ]
         );
@@ -52,7 +52,7 @@ class SectorController extends Controller
             ->where('id', $request->id)
             ->update(
                 [
-                    'name' => $request->nameSector,
+                    'name' => $request->name,
                     'id_object' => $request->id_object,
                 ]
 

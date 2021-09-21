@@ -28,7 +28,7 @@ class CategoryController extends Controller
     {
         DB::table('tbl_category')->insert(
             ["id" => $request->id,
-                "name" => $request->nameCategory,
+                "name" => $request->name,
                 "id_sectors" => $request->id_sector,
             ]
         );
@@ -52,7 +52,7 @@ class CategoryController extends Controller
             ->where('id', $request->id)
             ->update(
                 [
-                    'name' => $request->nameCategory,
+                    'name' => $request->name,
                     'id_sectors' => $request->id_sectors,
                 ]
 

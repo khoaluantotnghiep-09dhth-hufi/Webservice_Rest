@@ -31,7 +31,7 @@ class ObjectsController extends Controller
         DB::table('tbl_object')->insert(
             [
                 "id" => $request->id,
-                "name" => $request->nameObject,
+                "name" => $request->name,
 
             ]
         );
@@ -54,7 +54,7 @@ class ObjectsController extends Controller
             ->where('id', $request->idItem)
             ->update(
                 [
-                    'name' => $request->nameObject,
+                    'name' => $request->name,
                 ]
 
             );
