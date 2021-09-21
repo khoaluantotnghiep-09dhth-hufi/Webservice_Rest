@@ -20,10 +20,10 @@ class PromotionController extends Controller
         DB::table('tbl_promotion')->insert(
             [
                 "id" => $request->id,
-                "name" => $request->namePromotion,
-                "date_start" => $request->dateStart,
-                "date_end" => $request->dateEnd,
-                "desciption" => $request->nameDescription
+                "name" => $request->name,
+                "date_start" => $request->date_start,
+                "date_end" => $request->date_end,
+                "desciption" => $request->desciption
 
             ]
         );
@@ -46,10 +46,10 @@ class PromotionController extends Controller
         ->where('id', $request->id)
         ->update(
             [
-                "name" => $request->namePromotion,
-                "date_start" => $request->dateStart,
-                "date_end" => $request->dateEnd,
-                "desciption" => $request->nameDescription
+                "name" => $request->name,
+                "date_start" => $request->date_start,
+                "date_end" => $request->date_end,
+                "desciption" => $request->desciption
             ]
 
     );

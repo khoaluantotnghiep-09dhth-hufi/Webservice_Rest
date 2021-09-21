@@ -10,21 +10,10 @@ class NewsController extends Controller
     //Lấy tất cả danh sách Category
     public function index()
     {
-        // $result=Category::all();
-        // $result = DB::table('tbl_category')
-        //     ->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
-
-        //     ->select('tbl_sectors.id','tbl_sectors.name','tbl_category.id','tbl_category.name')
-        //     ->get();
-        $result = DB::table('tbl_news')
-            ->join('tbl_staff', 'tbl_staff.id', '=', 'tbl_news.id_staff')
-            ->select('tbl_news.id',
-                'tbl_news.title',
-                'tbl_news.date',
-                'tbl_news.description',
-                'tbl_staff.name as nameStaff',
-                'tbl_news.image',
-                'tbl_news.subtitle')
+        $result = DB::table('tbl_news')->join('tbl_staff', 'tbl_staff.id', '=', 'tbl_news.id_staff')
+            ->select(
+                'tbl_news.id', 'tbl_news.title', 'tbl_news.date', 'tbl_staff.name', 'tbl_news.image', 'tbl_news.sub_title'
+            )
             ->get();
         return response()->json($result);
     }
@@ -34,12 +23,12 @@ class NewsController extends Controller
         DB::table('tbl_news')->insert(
             [
                 "id" => $request->id,
-                "title" => $request->titleName,
+                "title" => $request->title,
                 "date" => $request->date,
                 "description" => $request->description,
                 "id_staff" => $request->id_staff,
                 "image" => $request->image,
-                "subtitle" => $request->subtitle,
+                "sub_title" => $request->sub_title,
             ]
         );
         return response()->json($request);
@@ -57,12 +46,12 @@ class NewsController extends Controller
             ->where('id', $request->idItem)
             ->update(
                 [
-                    "title" => $request->titleName,
+                    "title" => $request->title,
                     "date" => $request->date,
                     "description" => $request->description,
                     "id_staff" => $request->id_staff,
                     "image" => $request->image,
-                    "subtitle" => $request->subtitle,
+                    "sub_title" => $request->sub_title,
                 ]
 
             );
