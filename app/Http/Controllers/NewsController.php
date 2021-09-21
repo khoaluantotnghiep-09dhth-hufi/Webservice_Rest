@@ -12,7 +12,7 @@ class NewsController extends Controller
     {
         $result = DB::table('tbl_news')->join('tbl_staff', 'tbl_staff.id', '=', 'tbl_news.id_staff')
             ->select(
-                'tbl_news.id', 'tbl_news.title', 'tbl_news.date', 'tbl_staff.name', 'tbl_news.image', 'tbl_news.sub_title'
+                'tbl_news.id', 'tbl_news.title', 'tbl_news.date', 'tbl_staff.name', 'tbl_news.image', 'tbl_news.image_banner'
             )
             ->get();
         return response()->json($result);
@@ -28,7 +28,7 @@ class NewsController extends Controller
                 "description" => $request->description,
                 "id_staff" => $request->id_staff,
                 "image" => $request->image,
-                "sub_title" => $request->sub_title,
+                "image_banner" => $request->image_banner,
             ]
         );
         return response()->json($request);
@@ -51,7 +51,7 @@ class NewsController extends Controller
                     "description" => $request->description,
                     "id_staff" => $request->id_staff,
                     "image" => $request->image,
-                    "sub_title" => $request->sub_title,
+                    "image_banner" => $request->image_banner,
                 ]
 
             );
