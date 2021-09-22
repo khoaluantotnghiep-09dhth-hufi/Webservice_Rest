@@ -55,13 +55,17 @@ $router->post('/product-info', 'ProductInfoController@store');
 $router->get('/products', 'ProductController@index2');
 $router->get('/products/{id}', 'ProductController@show');
 
-//All Bill
+//All Bill for admin
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');
 $router->delete('/bills/{id}', 'BillController@destroy');
 $router->put('/bills/{id}', 'BillController@update');
 //Bill_Customer
 $router->get('/bill-customer', 'Bill_CustomerController@index');
+$router->post('/bill-customer', 'Bill_CustomerController@store');
+//Bill_Info
+$router->get('/bill-info-customer', 'BillInfoController@index');
+$router->post('/bill-info-customer', 'BillInfoController@store');
 //Promotion
 $router->get('/promotions', 'PromotionController@index');
 $router->get('/promotions/{id}', 'PromotionController@show');
