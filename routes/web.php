@@ -48,16 +48,21 @@ $router->put('/sectors/{id}', 'SectorController@update');
 //Products of Category
 $router->get('/products-category', 'ProductForCategoryController@index');
 $router->get('/product-sizes/{id}', 'ProductForCategoryController@show');
-$router->post('/products', 'ProductController@store');
+
 //product info
 $router->post('/product-info', 'ProductInfoController@store');
 $router->get('/product-info/{id}', 'ProductInfoController@index2');
 $router->get('/product-info', 'ProductInfoController@index');
 $router->delete('/product-info/{id}', 'ProductInfoController@destroy');
-//Product of Staff
-$router->get('/products', 'ProductController@index2');
+$router->put('/product-info/{id}', 'ProductInfoController@update');
+$router->get('/product-info2/{id}', 'ProductInfoController@show');
+//Product 
+// $router->get('/products', 'ProductController@index2');
 $router->get('/products/{id}', 'ProductController@show');
-
+$router->post('/products', 'ProductController@store');
+$router->get('/products', 'ProductController@index3');
+$router->delete('/products/{id}', 'ProductController@destroy');
+$router->put('/products/{id}', 'ProductController@update');
 //All Bill for admin
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');

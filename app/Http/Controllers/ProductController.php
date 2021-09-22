@@ -57,10 +57,34 @@ class ProductController extends Controller
                 'tbl_product_info.quantity as quantityAllProduct',
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor'
-            )->orderBy('tbl_product.id')
+            )
+            ->distinct()
+
+            ->orderBy('tbl_product.id')
             ->get();
         return response()->json($result);
 
+    }
+    public function index3()
+    {
+        $result = DB::table('tbl_product')
+            ->join('tbl_category', 'tbl_category.id', '=', 'tbl_product.id_category')
+            ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
+
+            ->select(
+                'tbl_product.id',
+                'tbl_product.name',
+                'tbl_product.price',
+                'tbl_product.description',
+                'tbl_product.like_product',
+                'tbl_product.dislike_product',
+                'tbl_category.name as nameCategory',
+                'tbl_product.image',
+                'tbl_promotion.name as namePromotion',
+            )
+            ->orderBy('tbl_product.id')
+            ->get();
+        return response()->json($result);
     }
     //Tạo một Product
     public function store(Request $request)
@@ -110,11 +134,27 @@ class ProductController extends Controller
         return response()->json($result);
     }
     //Cập nhật một Product theo $id
-    public function update($id)
+    public function update(Request $request)
     {
+        DB::table('tbl_product')
+            ->where('id', $request->idItem)
+            ->update(
+                [
+                    "name" => $request->name,
+                    "price" => $request->price,
+                    "description" => $request->description,
+                    "id_category" => $request->id_category,
+                    "image" => $request->image,
+                    "id_promotion" => $request->id_promotion,
+                ]
+
+            );
+        return response()->json($request);
     }
     //Xóa một Product theo $id
     public function destroy($id)
     {
+        DB::table('tbl_product')->where('id', '=', $id)->delete();
+        return response()->json($id);
     }
 }
