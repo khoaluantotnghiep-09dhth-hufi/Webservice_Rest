@@ -23,7 +23,8 @@ class PromotionController extends Controller
                 "name" => $request->name,
                 "date_start" => $request->date_start,
                 "date_end" => $request->date_end,
-                "desciption" => $request->desciption
+                "desciption" => $request->desciption,
+                "image"=> $request->image
 
             ]
         );
@@ -49,7 +50,8 @@ class PromotionController extends Controller
                 "name" => $request->name,
                 "date_start" => $request->date_start,
                 "date_end" => $request->date_end,
-                "desciption" => $request->desciption
+                "desciption" => $request->desciption,
+                "image"=> $request->image
             ]
 
     );
