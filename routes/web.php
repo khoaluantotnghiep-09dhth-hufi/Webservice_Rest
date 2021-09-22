@@ -110,6 +110,13 @@ $router->get('/orders-info/{id}', 'OrderInfoController@show');
 $router->post('/orders-info', 'OrderInfoController@store');
 $router->delete('/orders-info/{id}', 'OrderInfoController@destroy');
 $router->put('/orders-info/{id}', 'OrderController@update');
+//import product
+$router->get('/import-products', 'ImportController@index');
+$router->get('/import-products/{id}', 'ImportController@show');
+$router->post('/import-products', 'ImportController@store');
+$router->put('/import-products/{id}', 'ImportController@update');
+$router->delete('/import-products/{id}', 'ImportController@destroy');
+
 //run_test
 $router->get('/test', function () {
     return "Test successful";
