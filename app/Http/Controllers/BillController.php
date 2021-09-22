@@ -35,19 +35,11 @@ class BillController extends Controller
             ->where('id', $request->id)
             ->update(
                 [
-                    'status' => (int) $request->nameStatus,
-                    'date'=> $request->nameDate,
+                    'status' => (int) $request->status,
+                    'delivery_date'=> $request->delivery_date,
                 ]
 
             );
-
-        // $result= Bill::where('id', $request->idBill)->update(['status' => $request->status]);;
-
-        // Make sure you've got the Page model
-        // if($result) {
-        //     $result->status = $request->status;
-        //     $result->save();
-        // }
 
         return response()->json($request);
     }
