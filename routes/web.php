@@ -102,8 +102,8 @@ $router->put('/orders/{id}', 'OrderController@update');
 // order info
 $router->get('/orders-info', 'OrderInfoController@index');
 $router->get('/orders-info/{id}', 'OrderInfoController@show');
-$router->post('/orders-info', 'OrderController@store');
-$router->delete('/orders-info/{id}', 'OrderController@destroy');
+$router->post('/orders-info', 'OrderInfoController@store');
+$router->delete('/orders-info/{id}', 'OrderInfoController@destroy');
 $router->put('/orders-info/{id}', 'OrderController@update');
 //run_test
 $router->get('/test', function () {

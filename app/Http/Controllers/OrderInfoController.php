@@ -83,7 +83,7 @@ class OrderInfoController extends Controller
     //Xóa một Product theo $id
     public function destroy($id)
     {
-        // DB::table('tbl_order')->where('id', '=', $id)->delete();
-        // return response()->json($id);
+        DB::table('tbl_order_info')->where('id', '=', $id)->delete();
+        return response()->json($id);
     }
 }
