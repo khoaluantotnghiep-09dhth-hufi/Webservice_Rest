@@ -9,15 +9,37 @@ class ProductInfoController extends Controller
 {
     public function index()
     {
-        $result = ProductInfo::select('quantity', 'id')->with(['product' => function ($query) {
-            $query->select('id', 'name', 'price', 'image');
-        }, 'color' => function ($query) {
-            $query->select('id', 'name');
-        }, 'size' => function ($query) {
-            $query->select('id', 'name');
-        }])->get();
-
-        return response()->json($result,200);
+        $result = DB::table('tbl_product_info')
+        ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+        ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+        ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+        ->select(
+            'tbl_product_info.id',
+            'tbl_product.name',
+            'tbl_product_info.quantity',
+            'tbl_size.name as nameSize',
+            'tbl_color.name as nameColor'
+        )
+        ->orderBy('tbl_product.name')
+        ->get();
+    return response()->json($result);
+    }
+    public function index2($id){
+        $result = DB::table('tbl_product_info')
+        ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+        ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+        ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+        ->select(
+            'tbl_product_info.id',
+            'tbl_product.name',
+            'tbl_product_info.quantity',
+            'tbl_size.name as nameSize',
+            'tbl_color.name as nameColor'
+        )
+        ->where('tbl_product.id', '=', $id)
+        ->orderBy('tbl_product.name')
+        ->get();
+    return response()->json($result);
     }
     public function store(Request $request)
     {
@@ -40,5 +62,7 @@ class ProductInfoController extends Controller
     }
     public function destroy($id)
     {
+        DB::table('tbl_product_info')->where('id', '=', $id)->delete();
+        return response()->json($id);
     }
 }

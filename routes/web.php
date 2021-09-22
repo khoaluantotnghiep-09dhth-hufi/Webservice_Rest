@@ -51,6 +51,9 @@ $router->get('/product-sizes/{id}', 'ProductForCategoryController@show');
 $router->post('/products', 'ProductController@store');
 //product info
 $router->post('/product-info', 'ProductInfoController@store');
+$router->get('/product-info/{id}', 'ProductInfoController@index2');
+$router->get('/product-info', 'ProductInfoController@index');
+$router->delete('/product-info/{id}', 'ProductInfoController@destroy');
 //Product of Staff
 $router->get('/products', 'ProductController@index2');
 $router->get('/products/{id}', 'ProductController@show');

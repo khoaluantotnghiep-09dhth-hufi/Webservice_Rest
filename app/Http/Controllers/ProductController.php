@@ -67,7 +67,7 @@ class ProductController extends Controller
         DB::table('tbl_product')->insert(
             [
                 "id" => $request->id,
-                "name" => $request->nameProduct,
+                "name" => $request->name,
                 "price" => $request->price,
                 "description" => $request->description,
                 "like_product" => "0",
