@@ -50,10 +50,8 @@ class ProductForCategoryController extends Controller
             ->join('tbl_color', "tbl_color.id", "=", 'tbl_product_info.id_color')
             ->join('tbl_size', "tbl_size.id", "=", 'tbl_product_info.id_size')
             ->where("tbl_product.id", "=", $id)
-
-            // ->select("tbl_color.name", "tbl_size.name")
-            ->select("tbl_color.id as id_color","tbl_color.name as nameColor", "tbl_size.id as id_size","tbl_size.name as nameSize",DB::raw('sum(tbl_product_info.quantity) as totalQuantityProduct'),)
-            ->groupBy("tbl_color.id","tbl_color.name", "tbl_size.id","tbl_size.name")
+            ->select("tbl_color.id as id_color", "tbl_color.name as nameColor", "tbl_size.id as id_size", "tbl_size.name as nameSize", DB::raw('sum(tbl_product_info.quantity) as totalQuantityProduct'),)
+            ->groupBy("tbl_color.id", "tbl_color.name", "tbl_size.id", "tbl_size.name")
             ->get();
         return response()->json($result);
     }

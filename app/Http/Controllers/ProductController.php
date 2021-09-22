@@ -44,6 +44,7 @@ class ProductController extends Controller
             ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
             ->select(
                 'tbl_product.id',
+                'tbl_product_info.id as id_product_info',
                 'tbl_product.name',
                 'tbl_product.price',
                 'tbl_product.description',
@@ -59,7 +60,7 @@ class ProductController extends Controller
             )->orderBy('tbl_product.id')
             ->get();
         return response()->json($result);
-      
+
     }
     //Tạo một Product
     public function store(Request $request)
