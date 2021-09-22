@@ -19,7 +19,6 @@ class OrderInfoController extends Controller
             ->select(
                 'tbl_order_info.id',
                 'tbl_order_info.quantity',
-
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor',
                 'tbl_order_info.retail_price',
@@ -45,7 +44,7 @@ class OrderInfoController extends Controller
         return response()->json($request);
     }
 
-    public function show(Request $request)
+    public function show($id)
     {
         $result = DB::table('tbl_order_info')
             ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_order_info.id_product_info')
@@ -53,7 +52,6 @@ class OrderInfoController extends Controller
             ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
             ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
             ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
-            ->where('tbl_order_info.id_order', '=', $request->id)
             ->select(
                 'tbl_order_info.id',
                 'tbl_order_info.quantity',
@@ -63,6 +61,7 @@ class OrderInfoController extends Controller
                 'tbl_product.name as nameProduct',
                 'tbl_product.image',
             )
+            ->where('tbl_order_info.id_order', '=', $id)
             ->get();
         return response()->json($result);
     }
