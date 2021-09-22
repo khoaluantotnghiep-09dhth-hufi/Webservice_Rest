@@ -27,12 +27,13 @@ class Bill_CustomerController extends Controller
                 "status" => $request->status,
                 "id_customer" => $request->id_customer,
 
-         
+
                 "address" => $request->address,
                 "phone" => $request->phone,
                 "email" => $request->email,
                 "total_quantity" => $request->total_quantity,
-                "note" => $request->note
+                "note" => $request->note,
+                "name_customer"=>$request->name_customer,
             ]
         );
         return response()->json($request);
