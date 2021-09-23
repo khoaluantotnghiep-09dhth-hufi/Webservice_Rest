@@ -63,6 +63,14 @@ $router->post('/products', 'ProductController@store');
 $router->get('/products', 'ProductController@index3');
 $router->delete('/products/{id}', 'ProductController@destroy');
 $router->put('/products/{id}', 'ProductController@update');
+
+//Product admin
+
+$router->get('/products-admin/{id}', 'ProductAdminController@show');
+$router->post('/products-admin', 'ProductAdminController@store');
+$router->get('/products-admin', 'ProductAdminController@index');
+$router->delete('/products-admin/{id}', 'ProductAdminController@destroy');
+$router->put('/products-admin/{id}', 'ProductAdminController@update');
 //All Bill for admin
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');

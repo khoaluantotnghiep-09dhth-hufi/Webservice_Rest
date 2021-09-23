@@ -24,6 +24,7 @@ class OrderInfoController extends Controller
                 'tbl_order_info.retail_price',
                 'tbl_product.name as nameProduct',
                 'tbl_product.image',
+                'tbl_order.status'
             )
             ->get();
         return response()->json($result);
@@ -60,6 +61,7 @@ class OrderInfoController extends Controller
                 'tbl_order_info.retail_price',
                 'tbl_product.name as nameProduct',
                 'tbl_product.image',
+                'tbl_order.status',
             )
             ->where('tbl_order_info.id_order', '=', $id)
             ->get();
