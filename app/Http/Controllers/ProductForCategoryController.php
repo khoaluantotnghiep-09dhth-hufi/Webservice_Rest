@@ -55,6 +55,29 @@ class ProductForCategoryController extends Controller
             ->get();
         return response()->json($result);
     }
+
+    public function showCategory($id_Category)
+    {
+        $result = DB::table('tbl_product')
+        ->join('tbl_category', 'tbl_category.id', '=', 'tbl_product.id_category')
+        ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
+        ->where('tbl_category.id','=',$id_Category)
+        ->select(
+            'tbl_product.id',
+            'tbl_product.name',
+            'tbl_product.price',
+            'tbl_product.description',
+            'tbl_product.like_product',
+            'tbl_product.dislike_product',
+            'tbl_category.name as nameCategory',
+            'tbl_product.image',
+            'tbl_promotion.name as namePromotion',
+            'tbl_promotion.desciption as percentSale',
+
+        )->orderBy('tbl_product.id')
+        ->get();
+    return response()->json($result);
+    }
     //Cập nhật một Product theo $id
     public function update($id)
     {
