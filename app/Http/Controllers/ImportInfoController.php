@@ -5,47 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class OrderInfoController extends Controller
+class ImportInfoController extends Controller
 {
     public function index()
     {
 
-        $result = DB::table('tbl_order_info')
-            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_order_info.id_product_info')
-            ->join('tbl_order', 'tbl_order.id', '=', 'tbl_order_info.id_order')
+        $result = DB::table('tbl_import_info')
+            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_import_info.id_product_info')
+            ->join('tbl_order_info', 'tbl_order_info.id', '=', 'tbl_import_info.id_order_info')
             ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
             ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
             ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->join('tbl_order', 'tbl_order.id', '=', 'tbl_order_info.id_order')
             ->select(
-                'tbl_order_info.id',
-                'tbl_order_info.quantity',
+                'tbl_import_info.id',
+                'tbl_import_info.quantity',
+                'tbl_product.name',
+                'tbl_product.image',
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor',
-                'tbl_product.name as nameProduct',
-                'tbl_product.image',
-                'tbl_order.status'
-            )
-            ->get();
-        return response()->json($result);
-    }
-    public function index2()
-    {
+                'tbl_order.date_order',
 
-        $result = DB::table('tbl_order_info')
-            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_order_info.id_product_info')
-            ->join('tbl_order', 'tbl_order.id', '=', 'tbl_order_info.id_order')
-            ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
-            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
-            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
-            ->where('tbl_order.status', '=', 0)
-            ->select(
-                'tbl_order_info.id',
-                'tbl_order_info.quantity',
-                'tbl_size.name as nameSize',
-                'tbl_color.name as nameColor',
-                'tbl_product.name as nameProduct',
-                'tbl_product.image',
-                'tbl_order.status'
             )
             ->get();
         return response()->json($result);
@@ -67,34 +47,36 @@ class OrderInfoController extends Controller
 
     public function show($id)
     {
-        $result = DB::table('tbl_order_info')
-            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_order_info.id_product_info')
-            ->join('tbl_order', 'tbl_order.id', '=', 'tbl_order_info.id_order')
+        $result = DB::table('tbl_import_info')
+            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_import_info.id_product_info')
+            ->join('tbl_order_info', 'tbl_order_info.id', '=', 'tbl_import_info.id_order_info')
             ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
             ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
             ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->join('tbl_order', 'tbl_order.id', '=', 'tbl_order_info.id_order')
             ->select(
-                'tbl_order_info.id',
-                'tbl_order_info.quantity',
+                'tbl_import_info.id',
+                'tbl_import_info.quantity',
+                'tbl_product.name',
+                'tbl_product.image',
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor',
-                'tbl_product.name as nameProduct',
-                'tbl_product.image',
-                'tbl_order.status',
+                'tbl_order.date_order',
+
             )
-            ->where('tbl_order_info.id_order', '=', $id)
+            ->where('tbl_import_info.id_import', '=', $id)
             ->get();
         return response()->json($result);
     }
     //Cập nhật một Product theo $id
     public function update(Request $request)
     {
-            DB::table('tbl_order_info')
+        DB::table('tbl_order_info')
             ->where('id', $request->id)
             ->update(
                 [
-                'id_product_info' => $request->id_product_info,
-                'quantity' => $request->quantity,
+                    'id_product_info' => $request->id_product_info,
+                    'quantity' => $request->quantity,
                 ]
             );
         return response()->json($request);
