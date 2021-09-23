@@ -70,6 +70,7 @@ class ProductController extends Controller
         $result = DB::table('tbl_product')
             ->join('tbl_category', 'tbl_category.id', '=', 'tbl_product.id_category')
             ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
+            ->join('tbl_product_info', 'tbl_product_info.id_product', '=', 'tbl_product.id')
 
             ->select(
                 'tbl_product.id',
@@ -81,6 +82,7 @@ class ProductController extends Controller
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
                 'tbl_promotion.name as namePromotion',
+                'tbl_product_info.id as id_product_info',
             )
             ->orderBy('tbl_product.id')
             ->get();

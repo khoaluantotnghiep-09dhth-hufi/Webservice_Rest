@@ -18,7 +18,7 @@ class CategoryController extends Controller
         //     ->get();
         $result = DB::table('tbl_category')->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
             ->select(
-                'tbl_category.id', 'tbl_category.name', 'tbl_sectors.name as nameSector'
+                'tbl_category.id', 'tbl_category.name', 'tbl_sectors.name as nameSector', 'tbl_category.id_sectors'
             )
             ->get();
         return response()->json($result);
