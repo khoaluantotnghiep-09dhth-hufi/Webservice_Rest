@@ -119,11 +119,11 @@ $router->post('/orders-info', 'OrderInfoController@store');
 $router->delete('/orders-info/{id}', 'OrderInfoController@destroy');
 $router->put('/orders-info/{id}', 'OrderInfoController@update');
 //import product
-$router->get('/import-products', 'ImportController@index');
-$router->get('/import-products/{id}', 'ImportController@show');
-$router->post('/import-products', 'ImportController@store');
-$router->put('/import-products/{id}', 'ImportController@update');
-$router->delete('/import-products/{id}', 'ImportController@destroy');
+$router->get('/import-product', 'ImportController@index');
+$router->get('/import-product/{id}', 'ImportController@show');
+$router->post('/import-product', 'ImportController@store');
+$router->put('/import-product/{id}', 'ImportController@update');
+$router->delete('/import-product/{id}', 'ImportController@destroy');
 
 //run_test
 $router->get('/test', function () {
