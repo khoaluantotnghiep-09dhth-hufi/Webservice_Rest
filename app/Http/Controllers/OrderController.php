@@ -12,6 +12,17 @@ class OrderController extends Controller
 
         $result = DB::table('tbl_order')
             ->select('*')
+            ->orderBy('tbl_order.status')
+            ->get();
+        return response()->json($result);
+    }
+    public function index2()
+    {
+
+        $result = DB::table('tbl_order')
+            ->select('*')
+            ->where('status',0)
+            ->orderBy('tbl_order.status')
             ->get();
         return response()->json($result);
     }
