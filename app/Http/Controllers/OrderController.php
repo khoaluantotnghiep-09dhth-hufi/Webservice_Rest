@@ -24,7 +24,7 @@ class OrderController extends Controller
                 "id" => $request->id,
                 "date_order" => $request->date_order,
                 'name_warehouse' => $request->name_warehouse,
-                'status' => $request->status
+                'status' => "0"
             ]
         );
         return response()->json($request);
@@ -43,7 +43,6 @@ class OrderController extends Controller
             [
                 'date_order' => $request->date_order,
                 'name_warehouse' => $request->name_warehouse,
-                'status' => $request->status,
             ]
 
         );

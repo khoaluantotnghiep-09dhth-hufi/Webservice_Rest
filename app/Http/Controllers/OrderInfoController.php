@@ -70,17 +70,16 @@ class OrderInfoController extends Controller
     //Cập nhật một Product theo $id
     public function update(Request $request)
     {
-        //     DB::table('tbl_order')
-        //     ->where('id', $request->id)
-        //     ->update(
-        //         [
-        //             'date_order' => $request->date_order,
-        //             'name_warehouse' => $request->name_warehouse,
-        //             'status' => $request->status,
-        //         ]
-
-        //     );
-        // return response()->json($request);
+            DB::table('tbl_order_info')
+            ->where('id', $request->id)
+            ->update(
+                [
+                'id_product_info' => $request->id_product_info,
+                'quantity' => $request->quantity,
+                'retail_price' => $request->retail_price,
+                ]
+            );
+        return response()->json($request);
     }
     //Xóa một Product theo $id
     public function destroy($id)
