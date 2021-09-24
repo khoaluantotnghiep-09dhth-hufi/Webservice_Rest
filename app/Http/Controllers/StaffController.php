@@ -62,6 +62,20 @@ class StaffController extends Controller
             );
         return response()->json($request);
     }
+    //Cập nhật vị trí một Staff theo $id
+    public function updateAccount(Request $request)
+    {
+        DB::table('tbl_staff')
+            ->where('id', $request->id)
+            ->update(
+                [
+
+                    "postion" => $request->position,
+                ]
+
+            );
+        return response()->json($request);
+    }
     //Xóa một Staff theo $id
     public function destroy($id)
     {

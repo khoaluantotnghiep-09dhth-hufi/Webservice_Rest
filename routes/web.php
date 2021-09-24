@@ -101,6 +101,7 @@ $router->get('/staffs/{id}', 'StaffController@show');
 $router->post('/staffs', 'StaffController@store');
 $router->delete('/staffs/{id}', 'StaffController@destroy');
 $router->put('/staffs/{id}', 'StaffController@update');
+$router->put('/staff-account/{id}', 'StaffController@updateAccount');
 //news
 $router->get('/news', 'NewsController@index');
 $router->get('/news/{id}', 'NewsController@show');
