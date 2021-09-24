@@ -127,12 +127,16 @@ $router->post('/import-product', 'ImportController@store');
 $router->put('/import-product/{id}', 'ImportController@update');
 $router->delete('/import-product/{id}', 'ImportController@destroy');
 //import Info
+$router->get('/orders-info-quantity/{id}', 'OrderInfoController@show3');
+$router->get('/product-info-order-info/{id}', 'ProductInfoController@show2');
+$router->get('/orders-info-import/{id}', 'OrderInfoController@show2');
 $router->get('/orders-info-byid', 'OrderInfoController@index2');
 $router->get('/import-info', 'ImportInfoController@index');
 $router->get('/import-info/{id}', 'ImportInfoController@show');
 $router->post('/import-info', 'ImportInfoController@store');
 $router->put('/import-info/{id}', 'ImportInfoController@update');
 $router->delete('/import-info/{id}', 'ImportInfoController@destroy');
+$router->put('/product-info-import/{id}', 'ProductInfoController@update2');
 //run_test
 $router->get('/test', function () {
     return "Test successful";

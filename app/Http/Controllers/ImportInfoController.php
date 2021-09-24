@@ -33,11 +33,12 @@ class ImportInfoController extends Controller
 
     public function store(Request $request)
     {
-        DB::table('tbl_order_info')->insert(
+        DB::table('tbl_import_info')->insert(
             [
                 // Carbon::createFromFormat('d/m/Y', $request->date_order)->format('Y-m-d'),
                 "id" => $request->id,
-                'id_order' => $request->id_order,
+                'id_import' => $request->id_import,
+                'id_order_info' => $request->id_order_info,
                 'id_product_info' => $request->id_product_info,
                 'quantity' => $request->quantity,
             ]
@@ -62,7 +63,6 @@ class ImportInfoController extends Controller
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor',
                 'tbl_order.date_order',
-
             )
             ->where('tbl_import_info.id_import', '=', $id)
             ->get();

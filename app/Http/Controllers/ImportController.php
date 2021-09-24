@@ -31,6 +31,7 @@ class ImportController extends Controller
                 "id" => $request->id,
                 "date_import" => $request->date_import,
                 "id_order" => $request->id_order,
+                "status" => '0'
             ]
         );
         return response()->json($request);

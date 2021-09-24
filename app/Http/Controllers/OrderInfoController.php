@@ -60,6 +60,7 @@ class OrderInfoController extends Controller
                 'id_order' => $request->id_order,
                 'id_product_info' => $request->id_product_info,
                 'quantity' => $request->quantity,
+                'status' => '0'
             ]
         );
         return response()->json($request);
@@ -83,6 +84,38 @@ class OrderInfoController extends Controller
                 'tbl_order.status',
             )
             ->where('tbl_order_info.id_order', '=', $id)
+            ->get();
+        return response()->json($result);
+    }
+    public function show2($id)
+    {
+        $result = DB::table('tbl_order_info')
+            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_order_info.id_product_info')
+            ->join('tbl_order', 'tbl_order.id', '=', 'tbl_order_info.id_order')
+            ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->join('tbl_import', 'tbl_import.id_order', '=', 'tbl_order.id')
+            ->select(
+                'tbl_order_info.id',
+                'tbl_order_info.quantity',
+                'tbl_order_info.id_product_info',
+                'tbl_product.name',
+                'tbl_size.name as nameSize',
+                'tbl_color.name as nameColor'
+            )
+            ->where('tbl_order_info.id_order', '=', $id)
+            ->where('tbl_order_info.status','=', 0)
+            ->get();
+        return response()->json($result);
+    }
+    public function show3($id)
+    {
+        $result = DB::table('tbl_order_info')
+            ->select(
+              'tbl_order_info.quantity',
+            )
+            ->where('tbl_order_info.id', '=', $id)
             ->get();
         return response()->json($result);
     }

@@ -76,6 +76,25 @@ class ProductInfoController extends Controller
             ->get();
         return response()->json($result);
     }
+    public function show2($id)
+    {
+        $result = DB::table('tbl_product_info')
+            ->join('tbl_order_info', 'tbl_order_info.id_product_info', '=', 'tbl_product_info.id')
+            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+            ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->select(
+                'tbl_product_info.id',
+                'tbl_product.name',
+                'tbl_product_info.quantity',
+                'tbl_size.name as nameSize',
+                'tbl_color.name as nameColor',
+                'tbl_product.image',
+            )
+            ->where('tbl_order_info.id', '=', $id)
+            ->get();
+        return response()->json($result);
+    }
     public function update(Request $request)
     {
         DB::table('tbl_product_info')
@@ -84,6 +103,18 @@ class ProductInfoController extends Controller
                 [
                     "id_size" => $request->id_size,
                     "id_color" => $request->id_color,
+                    "quantity" => $request->quantity,
+                ]
+
+            );
+        return response()->json($request);
+    }
+    public function update2(Request $request)
+    {
+        DB::table('tbl_product_info')
+            ->where('id', $request->idItem)
+            ->update(
+                [
                     "quantity" => $request->quantity,
                 ]
 
