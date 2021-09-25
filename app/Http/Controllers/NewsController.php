@@ -10,14 +10,21 @@ class NewsController extends Controller
     //Lấy tất cả danh sách Category
     public function index()
     {
-        $result = DB::table('tbl_news')->join('tbl_staff', 'tbl_staff.id', '=', 'tbl_news.id_staff')
+        $result = DB::table('tbl_news')
+            ->join('tbl_staff', 'tbl_staff.id', '=', 'tbl_news.id_staff')
             ->select(
-                'tbl_news.id', 'tbl_news.title', 'tbl_news.date', 'tbl_staff.name', 'tbl_news.image', 'tbl_news.image_banner'
+                'tbl_news.id',
+                'tbl_news.title',
+                'tbl_news.date',
+                'tbl_staff.name',
+                'tbl_news.image',
+                'tbl_news.image_banner',
+                'tbl_news.description'
             )
             ->get();
         return response()->json($result);
     }
-    //Tạo một Category
+
     public function store(Request $request)
     {
         DB::table('tbl_news')->insert(
@@ -34,9 +41,11 @@ class NewsController extends Controller
         return response()->json($request);
     }
     //Lấy một Category theo $id
-    public function show(Request $request)
+    public function show($id)
     {
-        $result = DB::table('tbl_news')->where('id', $request->id)->first();
+        $result = DB::table('tbl_news')
+        ->where('id', $id)
+        ->first();
         return response()->json($result);
     }
     //Cập nhật một Category theo $id
