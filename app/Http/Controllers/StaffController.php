@@ -28,7 +28,7 @@ class StaffController extends Controller
                 "phone" => $request->phone,
                 "address" => $request->address,
                 "password" => $request->password,
-                "postion" => $request->position,
+                "role" => $request->role,
 
             ]
         );
@@ -56,7 +56,7 @@ class StaffController extends Controller
                     "phone" => $request->phone,
                     "address" => $request->address,
                     "password" => $request->password,
-                    "postion" => $request->position,
+                    "role" => $request->role,
                 ]
 
             );
@@ -70,7 +70,7 @@ class StaffController extends Controller
             ->update(
                 [
 
-                    "postion" => $request->position,
+                    "role" => $request->role,
                 ]
 
             );
