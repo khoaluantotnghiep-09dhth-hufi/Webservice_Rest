@@ -141,7 +141,7 @@ class ProductController extends Controller
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
                 'tbl_promotion.name as namePromotion',
-                'tbl_promotion.desciption as percentSale',
+                'tbl_promotion.description as percentSale',
                 'tbl_product_info.quantity as quantityAllProduct',
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor'

@@ -25,7 +25,7 @@ class ProductForCategoryController extends Controller
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
                 'tbl_promotion.name as namePromotion',
-                'tbl_promotion.desciption as percentSale',
+                'tbl_promotion.description as percentSale',
 
             )->orderBy('tbl_product.id')
             ->get();
@@ -72,7 +72,7 @@ class ProductForCategoryController extends Controller
             'tbl_category.name as nameCategory',
             'tbl_product.image',
             'tbl_promotion.name as namePromotion',
-            'tbl_promotion.desciption as percentSale',
+            'tbl_promotion.description as percentSale',
 
         )->orderBy('tbl_product.id')
         ->get();
