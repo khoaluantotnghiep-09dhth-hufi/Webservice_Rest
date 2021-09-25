@@ -138,6 +138,13 @@ $router->post('/import-info', 'ImportInfoController@store');
 $router->put('/import-info/{id}', 'ImportInfoController@update');
 $router->delete('/import-info/{id}', 'ImportInfoController@destroy');
 $router->put('/product-info-import/{id}', 'ProductInfoController@update2');
+
+//Exchange product
+$router->get('/exchange', 'ExchangeController@index');
+$router->get('/promotions/{id}', 'PromotionController@show');
+$router->post('/promotions', 'PromotionController@store');
+$router->delete('/promotions/{id}', 'PromotionController@destroy');
+$router->put('/promotions/{id}', 'PromotionController@update');
 //run_test
 $router->get('/test', function () {
     return "Test successful";
