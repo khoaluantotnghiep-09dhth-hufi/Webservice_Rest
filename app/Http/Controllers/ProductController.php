@@ -26,7 +26,7 @@ class ProductController extends Controller
                 'product.id_promotion',
                 'pp.name', 'pp.date_start',
                 'pp.date_end',
-                'pp.desciption',
+                'pp.description',
                 'ppf.id',
                 'ppf.id_size',
                 'ppf.id_color',
@@ -53,7 +53,7 @@ class ProductController extends Controller
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
                 'tbl_promotion.name as namePromotion',
-                'tbl_promotion.desciption as percentSale',
+                'tbl_promotion.description as percentSale',
                 'tbl_product_info.quantity as quantityAllProduct',
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor'
@@ -73,6 +73,9 @@ class ProductController extends Controller
             //Hàm này để thêm xóa sửa sp
             ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
             //Hàm này để thêm xóa sửa sp
+            ->join('tbl_product_info', 'tbl_product_info.id_product', '=', 'tbl_product.id')
+            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+            ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
             ->select(
                 //Hàm này để thêm xóa sửa sp
                 'tbl_product.id',
@@ -93,6 +96,9 @@ class ProductController extends Controller
                 //Hàm này để thêm xóa sửa sp
                 'tbl_promotion.name as namePromotion',
                 //Hàm này để thêm xóa sửa sp
+                'tbl_product_info.id as id_product_info',
+                'tbl_size.name as nameSize',
+                'tbl_color.name as nameColor'
             )
             //Hàm này để thêm xóa sửa sp
             ->distinct('tbl_product.id')
