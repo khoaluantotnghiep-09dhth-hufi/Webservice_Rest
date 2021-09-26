@@ -141,10 +141,12 @@ $router->put('/product-info-import/{id}', 'ProductInfoController@update2');
 
 //Exchange product
 $router->get('/exchange', 'ExchangeController@index');
-$router->get('/promotions/{id}', 'PromotionController@show');
-$router->post('/promotions', 'PromotionController@store');
-$router->delete('/promotions/{id}', 'PromotionController@destroy');
-$router->put('/promotions/{id}', 'PromotionController@update');
+$router->get('/exchange/{id}', 'ExchangeController@show');
+$router->post('/exchange', 'ExchangeController@store');
+$router->delete('/exchange/{id}', 'ExchangeController@destroy');
+$router->put('/exchange/{id}', 'ExchangeController@update');
+
+$router->get('/exchange-bill-info', 'BillExchangeController@index');
 //run_test
 $router->get('/test', function () {
     return "Test successful";
