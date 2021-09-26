@@ -147,6 +147,7 @@ $router->delete('/exchange/{id}', 'ExchangeController@destroy');
 $router->put('/exchange/{id}', 'ExchangeController@update');
 //acb
 $router->get('/exchange-bill-info', 'BillExchangeController@index');
+$router->get('/exchange-product-info/{id}', 'BillExchangeController@show');
 //run_test
 $router->get('/test', function () {
     return "Test successful";

@@ -30,7 +30,8 @@ class ExchangeController extends Controller
                 'tbl_product_exchange.id',
                 'tbl_bill_info.id as idBillInfo',
                 'tbl_staff.name as nameStaff',
-                'tbl_product_exchange.id_staff_change'
+                'tbl_product_exchange.id_staff_change',
+                'tbl_product_info.id as idProductInfo'
             )
             ->orderBy('tbl_customer.name')
             ->get();
