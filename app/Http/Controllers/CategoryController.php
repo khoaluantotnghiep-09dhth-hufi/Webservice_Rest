@@ -49,11 +49,11 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         DB::table('tbl_category')
-            ->where('id', $request->idItem)
+            ->where('id', $request->id)
             ->update(
                 [
                     'name' => $request->name,
-                    'id_sectors' => $request->id_sectors,
+                    'id_sectors' => $request->id_sector,
                 ]
 
             );
