@@ -20,6 +20,8 @@ class ProductAdminController extends Controller
             ->select(
                 //Hàm này để thêm xóa sửa sp
                 'tbl_product.id',
+                'tbl_product.id_category',
+                'tbl_product.id_promotion',
                 //Hàm này để thêm xóa sửa sp
                 'tbl_product.name',
                 //Hàm này để thêm xóa sửa sp
@@ -84,6 +86,8 @@ class ProductAdminController extends Controller
                 'tbl_product.dislike_product',
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
+                'tbl_product.id_promotion',
+                'tbl_product.id_category',
                 'tbl_promotion.name as namePromotion',
                 'tbl_promotion.description as percentSale',
                 'tbl_product_info.quantity as quantityAllProduct',
