@@ -148,6 +148,7 @@ $router->put('/exchange/{id}', 'ExchangeController@update');
 //acb
 $router->get('/exchange-bill-info', 'BillExchangeController@index');
 $router->get('/exchange-product-info/{id}', 'BillExchangeController@show');
+$router->put('/bill-info-exchange/{id}', 'BillInfoController@update');
 //run_test
 $router->get('/test', function () {
     return "Test successful";

@@ -27,8 +27,9 @@ class StaffController extends Controller
                 "email" => $request->email,
                 "phone" => $request->phone,
                 "address" => $request->address,
-                "password" => $request->password,
-                "role" => $request->role,
+                "password" => "123456",
+                "role" => 1,
+                "image" => $request->image,
 
             ]
         );
@@ -56,7 +57,8 @@ class StaffController extends Controller
                     "phone" => $request->phone,
                     "address" => $request->address,
                     "password" => $request->password,
-                    "role" => $request->role,
+                    "role" => 1,
+                    "image" => $request->image,
                 ]
 
             );

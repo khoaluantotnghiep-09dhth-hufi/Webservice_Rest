@@ -44,6 +44,16 @@ class BillInfoController extends Controller
     //Cập Nhật một Bill info theo $id
     public function update(Request $request)
     {
+        DB::table('tbl_bill_info')
+            ->where('id', $request->id)
+            ->update(
+                [
+                    'id_product_info' => (int) $request->id_product_info,
+                    'quantity'=> $request->quantity,
+                ]
+            );
+
+        return response()->json($request);
     }
     //Xóa một bill info theo $id
     public function destroy($id)
