@@ -14,9 +14,9 @@ class ProductAdminController extends Controller
         //Hàm này để thêm xóa sửa sp
         $result = DB::table('tbl_product')
             ->join('tbl_category', 'tbl_category.id', '=', 'tbl_product.id_category')
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
             ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
             ->select(
                 //Hàm này để thêm xóa sửa sp
                 'tbl_product.id',
@@ -40,13 +40,13 @@ class ProductAdminController extends Controller
                 'tbl_promotion.name as namePromotion',
                 //Hàm này để thêm xóa sửa sp
             )
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
             ->distinct('tbl_product.id')
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
             ->orderBy('tbl_product.id')
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
             ->get();
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
         return response()->json($result);
         //Hàm này để thêm xóa sửa sp
     }

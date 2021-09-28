@@ -18,8 +18,8 @@ class NewsController extends Controller
                 'tbl_news.date',
                 'tbl_staff.name',
                 'tbl_news.image',
-                'tbl_news.image_banner',
-                'tbl_news.description'
+                'tbl_news.descriptionHTML',
+                'tbl_news.descriptionText'
             )
             ->get();
         return response()->json($result);
@@ -32,10 +32,10 @@ class NewsController extends Controller
                 "id" => $request->id,
                 "title" => $request->title,
                 "date" => $request->date,
-                "description" => $request->description,
+                "descriptionHTML" => $request->descriptionHTML,
+                "descriptionText" => $request->descriptionText,
                 "id_staff" => $request->id_staff,
                 "image" => $request->image,
-                "image_banner" => $request->image_banner,
             ]
         );
         return response()->json($request);
@@ -44,6 +44,7 @@ class NewsController extends Controller
     public function show($id)
     {
         $result = DB::table('tbl_news')
+        ->select('*')
         ->where('id', $id)
         ->first();
         return response()->json($result);
@@ -57,7 +58,8 @@ class NewsController extends Controller
                 [
                     "title" => $request->title,
                     "date" => $request->date,
-                    "description" => $request->description,
+                    "descriptionHTML" => $request->descriptionHTML,
+                    "descriptionText" => $request->descriptionText,
                     "id_staff" => $request->id_staff,
                     "image" => $request->image,
                     "image_banner" => $request->image_banner,
