@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Hash;
 class CustomerController extends Controller
 {
     //Lấy tất cả danh sách Customer theo bill
@@ -32,12 +32,13 @@ class CustomerController extends Controller
         ->insert(
             [
                 'id' => $request->id,
-                'name' => $request->nameCustomer,
+                'name' => $request->name,
                 'address' => $request->address,
                 'phone' => $request->phone,
                 'image' => $request->image,
-                'password' => $request->password,
+                'password' =>'123456',
                 'email' => $request->email,
+                'gender' => $request->gender,
             ]
         );
         return response()->json($request);
@@ -58,12 +59,13 @@ class CustomerController extends Controller
         ->where('id', $request->idItem)
         ->update(
             [
-                'name' => $request->nameCustomer,
+                'name' => $request->name,
                 'address' => $request->address,
                 'phone' => $request->phone,
                 'image' => $request->image,
                 'password' => $request->password,
                 'email' => $request->email,
+                'gender' => $request->gender,
             ]
         );
         return response()->json($request);
