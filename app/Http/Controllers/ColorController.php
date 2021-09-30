@@ -19,7 +19,7 @@ class ColorController extends Controller
         DB::table('tbl_color')->insert(
             [
                 "id" => $request->id,
-                "name" => $request->nameColor,
+                "name" => $request->name,
             ]
         );
         return response()->json($request);
@@ -28,6 +28,10 @@ class ColorController extends Controller
     public function show($id)
     {
         $result = DB::table('tbl_color')
+            ->select(
+                'tbl_color.id',
+                'tbl_color.name'
+                )
 
             ->where('id', '=', $id)
 
@@ -41,7 +45,7 @@ class ColorController extends Controller
             ->where('id', $request->id)
             ->update(
                 [
-                    'name' => $request->nameColor,
+                    'name' => $request->name,
                 ]
 
             );

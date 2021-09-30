@@ -19,7 +19,9 @@ class ProductInfoController extends Controller
                 'tbl_product.name',
                 'tbl_product_info.quantity',
                 'tbl_size.name as nameSize',
-                'tbl_color.name as nameColor'
+                'tbl_color.name as nameColor',
+                'tbl_product_info.id_size',
+                'tbl_product_info.id_color'
             )
             ->orderBy('tbl_product.name')
             ->get();
@@ -38,6 +40,8 @@ class ProductInfoController extends Controller
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor',
                 'tbl_product.image',
+                'tbl_product_info.id_size',
+                'tbl_product_info.id_color'
             )
             ->where('tbl_product.id', '=', $id)
             ->orderBy('tbl_product.name')
@@ -70,6 +74,8 @@ class ProductInfoController extends Controller
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor',
                 'tbl_product.image',
+                'tbl_product_info.id_size',
+                'tbl_product_info.id_color'
             )
             ->where('tbl_product_info.id', '=', $id)
             ->orderBy('tbl_product.name')
@@ -90,6 +96,8 @@ class ProductInfoController extends Controller
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor',
                 'tbl_product.image',
+                'tbl_product_info.id_size',
+                'tbl_product_info.id_color'
             )
             ->where('tbl_order_info.id', '=', $id)
             ->get();

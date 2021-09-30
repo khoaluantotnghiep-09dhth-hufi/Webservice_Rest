@@ -20,20 +20,27 @@ class StaffController extends Controller
     //Tạo một Staff
     public function store(Request $request)
     {
-        DB::table('tbl_staff')->insert(
-            [
-                "id" => $request->id,
-                "name" => $request->nameStaff,
-                "email" => $request->email,
-                "phone" => $request->phone,
-                "address" => $request->address,
-                "password" => "123456",
-                "role" => 1,
-                "image" => $request->image,
 
-            ]
-        );
-        return response()->json($request);
+        $rs = DB::table('tbl_staff')->where('email', '=', $request->email)->first();
+        if ($rs === null) {
+            DB::table('tbl_staff')->insert(
+                [
+                    "id" => $request->id,
+                    "name" => $request->name,
+                    "email" => $request->email,
+                    "phone" => $request->phone,
+                    "address" => $request->address,
+                    "password" => "123456",
+                    "role" => 1,
+                    "image" => $request->image,
+                ]
+            );
+            return response()->json($request);
+        } else {
+            //echo '500 nè';
+            return response()->json($request, 500);
+        }
+       
     }
     //Lấy một Staff theo $id
     public function show($id)
@@ -52,12 +59,10 @@ class StaffController extends Controller
             ->where('id', $request->id)
             ->update(
                 [
-                    "name" => $request->nameStaff,
+                    "name" => $request->name,
                     "email" => $request->email,
                     "phone" => $request->phone,
                     "address" => $request->address,
-                    "password" => $request->password,
-                    "role" => 1,
                     "image" => $request->image,
                 ]
 
@@ -71,7 +76,6 @@ class StaffController extends Controller
             ->where('id', $request->id)
             ->update(
                 [
-
                     "role" => $request->role,
                 ]
 

@@ -19,7 +19,7 @@ class SizeController extends Controller
         DB::table('tbl_size')->insert(
             [
                 "id" => $request->id,
-                "name" => $request->nameSize,
+                "name" => $request->name,
             ]
         );
         return response()->json($request);
@@ -28,7 +28,10 @@ class SizeController extends Controller
     public function show($id)
     {
         $result = DB::table('tbl_size')
-
+            ->select(
+                'tbl_size.id',
+                'tbl_size.name',
+                )
             ->where('id', '=', $id)
 
             ->get();
@@ -41,7 +44,7 @@ class SizeController extends Controller
             ->where('id', $request->id)
             ->update(
                 [
-                    'name' => $request->nameSize,
+                    'name' => $request->name,
                 ]
 
             );
