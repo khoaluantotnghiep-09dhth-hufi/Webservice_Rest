@@ -145,6 +145,12 @@ $router->get('/exchange/{id}', 'ExchangeController@show');
 $router->post('/exchange', 'ExchangeController@store');
 $router->delete('/exchange/{id}', 'ExchangeController@destroy');
 $router->put('/exchange/{id}', 'ExchangeController@update');
+
+//Notification
+$router->get('/notifications', 'NotificationController@index');
+$router->post('/notifications', 'NotificationController@store');
+
+
 //acb
 $router->get('/exchange-bill-info', 'BillExchangeController@index');
 $router->get('/exchange-product-info/{id}', 'BillExchangeController@show');
