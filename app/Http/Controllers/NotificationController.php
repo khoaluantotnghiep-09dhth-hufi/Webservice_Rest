@@ -20,10 +20,11 @@ class NotificationController extends Controller
 
     public function store(Request $request)
     {
-        DB::table('tbl_object')->insert(
+        DB::table('tbl_notification')->insert(
             [
                 "id" => $request->id,
                 "is_read"=>0,
+                "time"=>$request->time,
                 "content" => $request->content,
 
             ]
