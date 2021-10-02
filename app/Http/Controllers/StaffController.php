@@ -48,16 +48,17 @@ class StaffController extends Controller
     {
         $result = DB::table('tbl_staff')
             ->select(
-                'id', 
-                'name', 
-                'gender', 
+                'id',
+                'name',
+                'gender',
                 'place_of_birth',
                 'image',
                 'cmnn_cccc',
                 'address',
                 'email',
                 'phone',
-                'password'
+                'password',
+                'role'
             )
             ->where('id', '=', $id)
 
