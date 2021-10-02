@@ -13,6 +13,11 @@ class BillController extends Controller
         $result = DB::table('tbl_bill')->select('*')->get();
         return response()->json($result);
     }
+    public function index2()
+    {
+        $result = DB::table('tbl_bill')->select('total')->get();
+        return response()->json($result);
+    }
     //Tạo một Bill
     public function store(Request $request)
     {

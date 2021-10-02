@@ -73,6 +73,7 @@ $router->get('/products-admin', 'ProductAdminController@index');
 $router->delete('/products-admin/{id}', 'ProductAdminController@destroy');
 $router->put('/products-admin/{id}', 'ProductAdminController@update');
 //All Bill for admin
+$router->get('/bills-total', 'BillController@index2');
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');
 $router->delete('/bills/{id}', 'BillController@destroy');
