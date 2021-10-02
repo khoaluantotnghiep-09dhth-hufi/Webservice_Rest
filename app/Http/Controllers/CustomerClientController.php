@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-class CustomerController extends Controller
+class CustomerClientController extends Controller
 {
     //Lấy tất cả danh sách Customer theo bill
     public function getCWB()
