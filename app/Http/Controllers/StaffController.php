@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
 {
@@ -30,7 +31,7 @@ class StaffController extends Controller
                     "email" => $request->email,
                     "phone" => $request->phone,
                     "address" => $request->address,
-                    "password" => "123456",
+                    "password" => '123456',
                     "role" => 1,
                     "image" => $request->image,
                 ]
@@ -40,13 +41,24 @@ class StaffController extends Controller
             //echo '500 nè';
             return response()->json($request, 500);
         }
-       
+
     }
     //Lấy một Staff theo $id
     public function show($id)
     {
         $result = DB::table('tbl_staff')
-
+            ->select(
+                'id', 
+                'name', 
+                'gender', 
+                'place_of_birth',
+                'image',
+                'cmnn_cccc',
+                'address',
+                'email',
+                'phone',
+                'password'
+            )
             ->where('id', '=', $id)
 
             ->get();
@@ -63,6 +75,35 @@ class StaffController extends Controller
                     "email" => $request->email,
                     "phone" => $request->phone,
                     "address" => $request->address,
+                    "image" => $request->image,
+                ]
+
+            );
+        return response()->json($request);
+    }
+    public function updatePassword(Request $request)
+    {
+        DB::table('tbl_staff')
+            ->where('id', $request->id)
+            ->update(
+                [
+                    "password" => $request->password,
+                ]
+            );
+        return response()->json($request);
+    }
+    public function updateProfile(Request $request)
+    {
+        DB::table('tbl_staff')
+            ->where('id', $request->id)
+            ->update(
+                [
+                    "name" => $request->name,
+                    "phone" => $request->phone,
+                    "address" => $request->address,
+                    "cmnn_cccc" => $request->cmnn_cccc,
+                    "gender" => $request->gender,
+                    "place_of_birth" => $request->place_of_birth,
                     "image" => $request->image,
                 ]
 
