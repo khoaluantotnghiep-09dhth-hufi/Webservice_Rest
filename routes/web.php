@@ -73,7 +73,7 @@ $router->get('/products-admin', 'ProductAdminController@index');
 $router->delete('/products-admin/{id}', 'ProductAdminController@destroy');
 $router->put('/products-admin/{id}', 'ProductAdminController@update');
 //All Bill for admin
-$router->get('/bills-total', 'BillController@index2');
+
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');
 $router->delete('/bills/{id}', 'BillController@destroy');
@@ -160,6 +160,8 @@ $router->get('/exchange-product-info/{id}', 'BillExchangeController@show');
 $router->put('/bill-info-exchange/{id}', 'BillInfoController@update');
 //run_test
 //statical
+$router->get('/bills-total', 'BillController@index3');
+$router->get('/bills-total-quantity', 'BillController@index4');
 $router->get('/staff-count', 'StaffController@index2');
 $router->get('/customer-count', 'CustomerController@index2');
 $router->get('/product-info-count', 'ProductInfoController@index3');

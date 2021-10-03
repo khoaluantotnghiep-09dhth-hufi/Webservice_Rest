@@ -22,11 +22,27 @@ class BillController extends Controller
     }
     public function index3()
     {
-        $result = DB::table('tbl_bill')
-            ->select(DB::raw('SUM(total) AS sumTotal'))
-            ->where('tbl_bill.order_date', '=', 'tbl_bill.order_date')
+        $result = DB::table('tbl_bill')->select(
+            DB::raw("(sum(total)) as sumTotal"),
+            DB::raw("order_date")
+        )
+            ->orderBy('order_date')
+            ->groupBy(DB::raw("order_date"))
             ->get();
-        return response()->json($result);
+
+            return response()->json($result);
+    }
+    public function index4()
+    {
+        $result = DB::table('tbl_bill')
+        ->select(
+            DB::raw("(sum(total_quantity)) as sumTotalQuantity"),
+            DB::raw("order_date")
+        )
+            ->orderBy('order_date')
+            ->groupBy(DB::raw("order_date"))
+            ->get();
+            return response()->json($result);
     }
     //Tạo một Bill
     public function store(Request $request)
