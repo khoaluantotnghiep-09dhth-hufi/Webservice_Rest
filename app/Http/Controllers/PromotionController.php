@@ -11,7 +11,9 @@ class PromotionController extends Controller
     //Lấy tất cả danh sách Promotion
     public function index()
     {
-        $result = DB::table('tbl_promotion')->select('*')->get();
+        $result = DB::table('tbl_promotion')->select('*')
+        ->orderBy('tbl_promotion.id', 'DESC')
+        ->get();
         return response()->json($result);
     }
     //Tạo một Promotion

@@ -13,6 +13,7 @@ class CustomerController extends Controller
         $result = DB::table('tbl_customer as c')
             ->join('tbl_bill as b', 'c.id', '=', 'b.id_customer')
             ->select('*')
+            ->orderBy('tbl_customer.id', 'DESC')
             ->get();
         return response()->json($result);
     }

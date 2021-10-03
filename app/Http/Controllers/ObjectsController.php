@@ -17,6 +17,7 @@ class ObjectsController extends Controller
         $result = DB::table('tbl_object')
 
             ->select('*')
+            ->orderBy('tbl_object.id', 'DESC')
             ->get();
         return response()->json($result);
     }

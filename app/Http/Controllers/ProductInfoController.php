@@ -24,7 +24,7 @@ class ProductInfoController extends Controller
                 'tbl_product_info.id_color',
                 'tbl_product_info.id_product'
             )
-            ->orderBy('tbl_product.name')
+            ->orderBy('tbl_product_info.id', 'DESC')
             ->get();
         return response()->json($result);
     }
