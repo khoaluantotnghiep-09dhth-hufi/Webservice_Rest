@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Bill;
+
 class BillController extends Controller
 {
     //Lấy tất cả danh sách Bill
@@ -15,7 +15,17 @@ class BillController extends Controller
     }
     public function index2()
     {
-        $result = DB::table('tbl_bill')->select('total')->get();
+        $result = DB::table('tbl_bill')
+            ->select('*')
+            ->get();
+        return response()->json($result);
+    }
+    public function index3()
+    {
+        $result = DB::table('tbl_bill')
+            ->select(DB::raw('SUM(total) AS sumTotal'))
+            ->where('tbl_bill.order_date', '=', 'tbl_bill.order_date')
+            ->get();
         return response()->json($result);
     }
     //Tạo một Bill
@@ -36,12 +46,12 @@ class BillController extends Controller
     //Cập Nhật một Bill theo $id
     public function update(Request $request)
     {
-          DB::table('tbl_bill')
+        DB::table('tbl_bill')
             ->where('id', $request->id)
             ->update(
                 [
                     'status' => (int) $request->status,
-                    'delivery_date'=> $request->delivery_date,
+                    'delivery_date' => $request->delivery_date,
                 ]
 
             );
