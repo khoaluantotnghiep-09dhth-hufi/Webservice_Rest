@@ -10,45 +10,27 @@ class ProductAdminController extends Controller
     //Lấy tất cả danh sách Product
     public function index()
     {
-
-        //Hàm này để thêm xóa sửa sp
         $result = DB::table('tbl_product')
             ->join('tbl_category', 'tbl_category.id', '=', 'tbl_product.id_category')
-        //Hàm này để thêm xóa sửa sp
             ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
-        //Hàm này để thêm xóa sửa sp
             ->select(
-                //Hàm này để thêm xóa sửa sp
+
                 'tbl_product.id',
                 'tbl_product.id_category',
                 'tbl_product.id_promotion',
-                //Hàm này để thêm xóa sửa sp
                 'tbl_product.name',
-                //Hàm này để thêm xóa sửa sp
                 'tbl_product.price',
-                //Hàm này để thêm xóa sửa sp
                 'tbl_product.description',
-                //Hàm này để thêm xóa sửa sp
                 'tbl_product.like_product',
-                //Hàm này để thêm xóa sửa sp
-                'tbl_product.dislike_product',
-                //Hàm này để thêm xóa sửa sp
                 'tbl_category.name as nameCategory',
-                //Hàm này để thêm xóa sửa sp
                 'tbl_product.image',
-                //Hàm này để thêm xóa sửa sp
                 'tbl_promotion.name as namePromotion',
-                //Hàm này để thêm xóa sửa sp
+                'tbl_product.status'
             )
-        //Hàm này để thêm xóa sửa sp
             ->distinct('tbl_product.id')
-        //Hàm này để thêm xóa sửa sp
-            ->orderBy('tbl_product.id')
-        //Hàm này để thêm xóa sửa sp
+            ->orderBy('tbl_product.id', 'DESC')
             ->get();
-        //Hàm này để thêm xóa sửa sp
         return response()->json($result);
-        //Hàm này để thêm xóa sửa sp
     }
     //Tạo một Product
     public function store(Request $request)
@@ -60,10 +42,10 @@ class ProductAdminController extends Controller
                 "price" => $request->price,
                 "description" => $request->description,
                 "like_product" => "0",
-                "dislike_product" => "0",
                 "id_category" => $request->id_category,
                 "image" => $request->image,
                 "id_promotion" => $request->id_promotion,
+                'status' => $request->status,
             ]
         );
         return response()->json($request);
@@ -83,7 +65,6 @@ class ProductAdminController extends Controller
                 'tbl_product.price',
                 'tbl_product.description',
                 'tbl_product.like_product',
-                'tbl_product.dislike_product',
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
                 'tbl_product.id_promotion',
@@ -92,7 +73,8 @@ class ProductAdminController extends Controller
                 'tbl_promotion.description as percentSale',
                 'tbl_product_info.quantity as quantityAllProduct',
                 'tbl_size.name as nameSize',
-                'tbl_color.name as nameColor'
+                'tbl_color.name as nameColor',
+                'tbl_product.status'
             )
             ->where('tbl_product.id', '=', $id)
             ->orderBy('tbl_product.id')
@@ -112,6 +94,7 @@ class ProductAdminController extends Controller
                     "id_category" => $request->id_category,
                     "image" => $request->image,
                     "id_promotion" => $request->id_promotion,
+                    'status' => $request->status,
                 ]
 
             );
