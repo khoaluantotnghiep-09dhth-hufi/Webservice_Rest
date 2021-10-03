@@ -25,6 +25,7 @@ class CustomerClientController extends Controller
         ->get();
         return response()->json($result);
     }
+    
     //Tạo một Customer
     public function store(Request $request)
     {

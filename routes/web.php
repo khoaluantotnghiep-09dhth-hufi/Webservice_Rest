@@ -11,7 +11,7 @@
 | It is a breeze. Simply tell Lumen the URIs it should respond to
 | and give it the Closure to call when that URI is requested.
 |
-*/
+ */
 
 $router->get('/', 'AuthController@index');
 //Category
@@ -154,12 +154,15 @@ $router->put('/exchange/{id}', 'ExchangeController@update');
 $router->get('/notifications', 'NotificationController@index');
 $router->post('/notifications', 'NotificationController@store');
 
-
 //acb
 $router->get('/exchange-bill-info', 'BillExchangeController@index');
 $router->get('/exchange-product-info/{id}', 'BillExchangeController@show');
 $router->put('/bill-info-exchange/{id}', 'BillInfoController@update');
 //run_test
+//statical
+$router->get('/staff-count', 'StaffController@index2');
+$router->get('/customer-count', 'CustomerController@index2');
+$router->get('/product-info-count', 'ProductInfoController@index3');
 $router->get('/test', function () {
     return "Test successful";
 });

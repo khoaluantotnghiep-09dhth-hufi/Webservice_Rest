@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
 {
@@ -15,6 +14,13 @@ class StaffController extends Controller
             ->select(
                 '*'
             )
+            ->get();
+        return response()->json($result);
+    }
+    public function index2()
+    {
+        $result = DB::table('tbl_staff')
+            ->select(DB::raw('count(*) AS countStaff'))
             ->get();
         return response()->json($result);
     }

@@ -50,6 +50,14 @@ class ProductInfoController extends Controller
             ->get();
         return response()->json($result);
     }
+    public function index3()
+    {
+        $result = DB::table('tbl_product_info')
+            
+            ->select(DB::raw('sum(quantity) AS countProduct'))
+            ->get();
+        return response()->json($result);
+    }
     public function store(Request $request)
     {
         DB::table('tbl_product_info')->insert(
