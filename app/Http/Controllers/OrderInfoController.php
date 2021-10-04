@@ -25,6 +25,7 @@ class OrderInfoController extends Controller
                 'tbl_product.image',
                 'tbl_order.status'
             )
+            ->orderBy('tbl_order_info.id', 'DESC')
             ->get();
         return response()->json($result);
     }

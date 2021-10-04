@@ -19,7 +19,7 @@ class ImportController extends Controller
                 'tbl_order.name_warehouse',
                 'tbl_import.status'
             )
-            ->orderBy('tbl_import.status')
+            ->orderBy('tbl_import.id','DESC')
             ->get();
         return response()->json($result);
     }

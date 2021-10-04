@@ -25,8 +25,8 @@ class ImportInfoController extends Controller
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor',
                 'tbl_order.date_order',
-
             )
+            ->orderBy('tbl_import_info.id', 'DESC')
             ->get();
         return response()->json($result);
     }

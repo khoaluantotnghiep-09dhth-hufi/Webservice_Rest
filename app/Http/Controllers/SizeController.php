@@ -10,7 +10,9 @@ class SizeController extends Controller
     //Lấy tất cả danh sách Color
     public function index()
     {
-        $result = DB::table('tbl_size')->select('*')->get();
+        $result = DB::table('tbl_size')->select('*')
+        ->orderBy('tbl_size.id', 'DESC')
+        ->get();
         return response()->json($result);
     }
     //Tạo một Color

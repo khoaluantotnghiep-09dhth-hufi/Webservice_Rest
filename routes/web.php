@@ -11,7 +11,7 @@
 | It is a breeze. Simply tell Lumen the URIs it should respond to
 | and give it the Closure to call when that URI is requested.
 |
-*/
+ */
 
 $router->get('/', 'AuthController@index');
 //Category
@@ -73,7 +73,7 @@ $router->get('/products-admin', 'ProductAdminController@index');
 $router->delete('/products-admin/{id}', 'ProductAdminController@destroy');
 $router->put('/products-admin/{id}', 'ProductAdminController@update');
 //All Bill for admin
-$router->get('/bills-total', 'BillController@index2');
+
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');
 $router->delete('/bills/{id}', 'BillController@destroy');
@@ -94,6 +94,7 @@ $router->put('/promotions/{id}', 'PromotionController@update');
 $router->get('/customers', 'CustomerController@index');
 $router->get('/customers/{id}', 'CustomerController@show');
 $router->post('/customers', 'CustomerController@store');
+$router->post('/customers', 'CustomerClientController@store');
 $router->put('/customers/{id}', 'CustomerController@update');
 $router->delete('/customers/{id}', 'CustomerController@destroy');
 //staff
@@ -153,12 +154,17 @@ $router->put('/exchange/{id}', 'ExchangeController@update');
 $router->get('/notifications', 'NotificationController@index');
 $router->post('/notifications', 'NotificationController@store');
 
-
 //acb
 $router->get('/exchange-bill-info', 'BillExchangeController@index');
 $router->get('/exchange-product-info/{id}', 'BillExchangeController@show');
 $router->put('/bill-info-exchange/{id}', 'BillInfoController@update');
 //run_test
+//statical
+$router->get('/bills-total', 'BillController@index3');
+$router->get('/bills-total-quantity', 'BillController@index4');
+$router->get('/staff-count', 'StaffController@index2');
+$router->get('/customer-count', 'CustomerController@index2');
+$router->get('/product-info-count', 'ProductInfoController@index3');
 $router->get('/test', function () {
     return "Test successful";
 });

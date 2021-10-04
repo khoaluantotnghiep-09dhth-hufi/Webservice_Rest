@@ -24,7 +24,7 @@ class ProductInfoController extends Controller
                 'tbl_product_info.id_color',
                 'tbl_product_info.id_product'
             )
-            ->orderBy('tbl_product.name')
+            ->orderBy('tbl_product_info.id', 'DESC')
             ->get();
         return response()->json($result);
     }
@@ -47,6 +47,14 @@ class ProductInfoController extends Controller
             )
             ->where('tbl_product.id', '=', $id)
             ->orderBy('tbl_product.name')
+            ->get();
+        return response()->json($result);
+    }
+    public function index3()
+    {
+        $result = DB::table('tbl_product_info')
+            
+            ->select(DB::raw('sum(quantity) AS countProduct'))
             ->get();
         return response()->json($result);
     }

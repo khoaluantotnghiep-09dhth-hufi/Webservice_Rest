@@ -24,6 +24,7 @@ class BillExchangeController extends Controller
                 'tbl_product.name as nameProduct',
                 'tbl_bill_info.id_product_info as idProductInfo'
             )
+            ->orderBy('tbl_bill_info.id', 'DESC')
             ->get();
         return response()->json($result);
     }

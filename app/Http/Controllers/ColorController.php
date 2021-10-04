@@ -10,7 +10,9 @@ class ColorController extends Controller
     //Lấy tất cả danh sách Color
     public function index()
     {
-        $result = DB::table('tbl_color')->select('*')->get();
+        $result = DB::table('tbl_color')->select('*')
+        ->orderBy('tbl_color.id', 'DESC')
+        ->get();
         return response()->json($result);
     }
     //Tạo một Color

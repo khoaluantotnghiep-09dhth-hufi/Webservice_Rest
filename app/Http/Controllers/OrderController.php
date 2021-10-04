@@ -12,7 +12,7 @@ class OrderController extends Controller
 
         $result = DB::table('tbl_order')
             ->select('*')
-            ->orderBy('tbl_order.status')
+            ->orderBy('tbl_order.id', 'DESC')
             ->get();
         return response()->json($result);
     }
