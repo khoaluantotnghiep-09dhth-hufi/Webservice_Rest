@@ -30,7 +30,13 @@ class ImportInfoController extends Controller
             ->get();
         return response()->json($result);
     }
-
+    public function countImport()
+    {
+        $result = DB::table('tbl_import_info')
+            ->select(DB::raw('SUM(quantity) AS countImportInfo'))
+            ->get();
+        return response()->json($result);
+    }
     public function store(Request $request)
     {
         DB::table('tbl_import_info')->insert(
@@ -45,7 +51,6 @@ class ImportInfoController extends Controller
         );
         return response()->json($request);
     }
-
     public function show($id)
     {
         $result = DB::table('tbl_import_info')

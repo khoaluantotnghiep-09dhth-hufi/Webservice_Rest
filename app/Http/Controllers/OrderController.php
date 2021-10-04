@@ -26,7 +26,20 @@ class OrderController extends Controller
             ->get();
         return response()->json($result);
     }
+    public function sumQuantityByDate()
+    {
+        $result = DB::table('tbl_order')
+        ->join('tbl_order_info', 'tbl_order_info.id_order', '=', 'tbl_order.id')
+        ->select(
+            DB::raw("(sum(quantity)) as sumQuantity"),
+            DB::raw("date_order")
+        )
+            ->orderBy('date_order')
+            ->groupBy(DB::raw("date_order"))
+            ->get();
 
+            return response()->json($result);
+    }
     public function store(Request $request)
     {
         DB::table('tbl_order')->insert(

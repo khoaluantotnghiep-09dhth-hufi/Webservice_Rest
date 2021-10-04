@@ -30,19 +30,29 @@ class BillController extends Controller
             ->groupBy(DB::raw("order_date"))
             ->get();
 
-            return response()->json($result);
+        return response()->json($result);
     }
     public function index4()
     {
         $result = DB::table('tbl_bill')
-        ->select(
-            DB::raw("(sum(total_quantity)) as sumTotalQuantity"),
-            DB::raw("order_date")
-        )
+            ->select(
+                DB::raw("(sum(total_quantity)) as sumTotalQuantity"),
+                DB::raw("order_date")
+            )
             ->orderBy('order_date')
             ->groupBy(DB::raw("order_date"))
             ->get();
-            return response()->json($result);
+        return response()->json($result);
+    }
+    public function countStatus0Bill()
+    {
+        $result = DB::table('tbl_bill')
+            ->select(
+                DB::raw("(count(status)) as countStatus"),
+            )
+            ->where('status', '=', 0)
+            ->get();
+        return response()->json($result);
     }
     //Tạo một Bill
     public function store(Request $request)

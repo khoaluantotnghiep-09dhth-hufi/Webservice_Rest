@@ -23,6 +23,19 @@ class ImportController extends Controller
             ->get();
         return response()->json($result);
     }
+    public function sumQuantityByDate()
+    {
+        $result = DB::table('tbl_import')
+        ->join('tbl_import_info', 'tbl_import_info.id_import', '=', 'tbl_import.id')
+        ->select(
+            DB::raw("(sum(quantity)) as sumQuantity"),
+            DB::raw("date_import")
+        )
+            ->orderBy('date_import')
+            ->groupBy(DB::raw("date_import"))
+            ->get();
+            return response()->json($result);
+    }
     //Tạo một phiếu nhập
     public function store(Request $request)
     {

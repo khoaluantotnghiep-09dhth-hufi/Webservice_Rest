@@ -165,6 +165,11 @@ $router->get('/bills-total-quantity', 'BillController@index4');
 $router->get('/staff-count', 'StaffController@index2');
 $router->get('/customer-count', 'CustomerController@index2');
 $router->get('/product-info-count', 'ProductInfoController@index3');
+$router->get('/order-info-count', 'OrderInfoController@countOrder');
+$router->get('/import-info-count', 'ImportInfoController@countImport');
+$router->get('/order-sum-date', 'OrderController@sumQuantityByDate');
+$router->get('/import-sum-date', 'ImportController@sumQuantityByDate');
+$router->get('/count-status-bill', 'BillController@countStatus0Bill');
 $router->get('/test', function () {
     return "Test successful";
 });

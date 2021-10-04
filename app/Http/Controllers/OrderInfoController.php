@@ -29,6 +29,14 @@ class OrderInfoController extends Controller
             ->get();
         return response()->json($result);
     }
+    public function countOrder()
+    {
+        $result = DB::table('tbl_order_info')
+            ->select(DB::raw('SUM(quantity) AS countOrderInfo'))
+            ->get();
+        return response()->json($result);
+    }
+   
     public function index2()
     {
 
