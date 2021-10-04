@@ -94,8 +94,9 @@ $router->put('/promotions/{id}', 'PromotionController@update');
 $router->get('/customers', 'CustomerController@index');
 $router->get('/customers/{id}', 'CustomerController@show');
 $router->post('/customers', 'CustomerController@store');
-$router->post('/customers', 'CustomerClientController@store');
+$router->post('/customers_client', 'CustomerClientController@store');
 $router->put('/customers/{id}', 'CustomerController@update');
+$router->put('/customers_client/{id}', 'CustomerClientController@update');
 $router->delete('/customers/{id}', 'CustomerController@destroy');
 //staff
 $router->get('/staffs', 'StaffController@index');
