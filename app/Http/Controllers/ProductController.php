@@ -49,7 +49,7 @@ class ProductController extends Controller
                 'tbl_product.price',
                 'tbl_product.description',
                 'tbl_product.like_product',
-                'tbl_product.dislike_product',
+
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
                 'tbl_promotion.name as namePromotion',
@@ -88,7 +88,7 @@ class ProductController extends Controller
                 //Hàm này để thêm xóa sửa sp
                 'tbl_product.like_product',
                 //Hàm này để thêm xóa sửa sp
-                'tbl_product.dislike_product',
+         
                 //Hàm này để thêm xóa sửa sp
                 'tbl_category.name as nameCategory',
                 //Hàm này để thêm xóa sửa sp

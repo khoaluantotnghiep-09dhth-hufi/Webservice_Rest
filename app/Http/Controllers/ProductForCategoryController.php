@@ -21,7 +21,7 @@ class ProductForCategoryController extends Controller
                 'tbl_product.price',
                 'tbl_product.description',
                 'tbl_product.like_product',
-                'tbl_product.dislike_product',
+              
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
                 'tbl_promotion.name as namePromotion',
