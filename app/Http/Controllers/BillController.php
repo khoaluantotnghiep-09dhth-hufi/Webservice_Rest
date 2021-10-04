@@ -68,7 +68,10 @@ class BillController extends Controller
                 [
                     'status' => (int) $request->status,
 
-                    'delivery_date' => $request->delivery_date,
+                    'delivery_date'=> $request->delivery_date,
+                    'id_staff'=> $request->id_staff,
+
+                 
 
                 ]
 
