@@ -57,7 +57,7 @@ class CustomerClientController extends Controller
     public function update(Request $request)
     {
         DB::table('tbl_customer')
-        ->where('id', $request->idItem)
+        ->where('id', $request->id)
         ->update(
             [
                 'name' => $request->name,
