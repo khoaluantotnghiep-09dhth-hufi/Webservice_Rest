@@ -171,6 +171,7 @@ $router->get('/import-info-count', 'ImportInfoController@countImport');
 $router->get('/order-sum-date', 'OrderController@sumQuantityByDate');
 $router->get('/import-sum-date', 'ImportController@sumQuantityByDate');
 $router->get('/count-status-bill', 'BillController@countStatus0Bill');
+$router->get('/count-status-product', 'ProductInfoController@countStatusProduct');
 $router->get('/test', function () {
     return "Test successful";
 });

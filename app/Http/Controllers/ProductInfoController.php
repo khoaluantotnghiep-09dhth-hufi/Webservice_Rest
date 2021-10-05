@@ -53,8 +53,17 @@ class ProductInfoController extends Controller
     public function index3()
     {
         $result = DB::table('tbl_product_info')
-            
+
             ->select(DB::raw('sum(quantity) AS countProduct'))
+            ->get();
+        return response()->json($result);
+    }
+    public function countStatusProduct()
+    {
+        $result = DB::table('tbl_product_info')
+            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->select(DB::raw('count(quantity) AS countProduct'))
+            ->where('tbl_product.status', '=', 1)
             ->get();
         return response()->json($result);
     }
