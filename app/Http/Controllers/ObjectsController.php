@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Objects;
-use App\Models\Sector;
 use Illuminate\Support\Facades\DB;
 
 class ObjectsController extends Controller
@@ -17,7 +14,6 @@ class ObjectsController extends Controller
         $result = DB::table('tbl_object')
 
             ->select('*')
-            ->orderBy('tbl_object.id', 'DESC')
             ->get();
         return response()->json($result);
     }
