@@ -14,6 +14,12 @@
  */
 
 $router->get('/', 'AuthController@index');
+//Banner
+$router->get('/banners', 'BannerController@index');
+$router->get('/banners/{id}', 'BannerController@show');
+$router->post('/banners', 'BannerController@store');
+$router->delete('/banners/{id}', 'BannerController@destroy');
+$router->put('/banners/{id}', 'BannerController@update');
 //Category
 $router->get('/categories', 'CategoryController@index');
 $router->get('/categories/{id}', 'CategoryController@show');
