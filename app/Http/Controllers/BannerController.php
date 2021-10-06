@@ -57,7 +57,8 @@ class BannerController extends Controller
      //Xóa một Color theo $id
      public function destroy($id)
      {
-        $result= DB::table('tbl_banner')->where('id', '=', $id)->delete();
+        $result=  DB::table('tbl_banner')->where('id', '=', $id)
+        ->delete();
          return response()->json($result);
      }
 }
