@@ -58,6 +58,7 @@ $router->get('/product-sizes/{id}', 'ProductForCategoryController@show');
 
 //product info
 $router->get('/product-info-mobile/{id}', 'ProductInfoController@showProductInfoByIdProduct');
+$router->get('/product-info-color-size-mobile/{id}', 'ProductInfoController@showProductInfoColorByIdProduct');
 $router->post('/product-info', 'ProductInfoController@store');
 $router->get('/product-info/{id}', 'ProductInfoController@index2');
 $router->get('/product-info', 'ProductInfoController@index');

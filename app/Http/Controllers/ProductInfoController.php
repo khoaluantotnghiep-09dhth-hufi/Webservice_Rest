@@ -56,7 +56,6 @@ class ProductInfoController extends Controller
     {
         $result = DB::table('tbl_product_info')
             ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
-            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
             ->select(
                 'id_product',
                 'tbl_product.image',
@@ -65,6 +64,24 @@ class ProductInfoController extends Controller
                 'tbl_product.name')
             ->where('tbl_product.id', '=', $id)
             ->distinct()->get();
+        return response()->json($result);
+    }
+    public function showProductInfoColorByIdProduct($id)
+    {
+        $result = DB::table('tbl_product_info')
+            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+            ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+            ->select(
+                'id_product',
+                'tbl_product_info.id',
+                'tbl_color.id',
+                'tbl_color.name as nameColor',
+                'tbl_size.id',
+                'tbl_size.name as nameSize',
+            )
+            ->where('tbl_product.id', '=', $id)
+            ->get();
         return response()->json($result);
     }
     public function index3()
