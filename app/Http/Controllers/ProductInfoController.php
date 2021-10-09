@@ -56,7 +56,13 @@ class ProductInfoController extends Controller
     {
         $result = DB::table('tbl_product_info')
             ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
-            ->select('id_product', 'tbl_product.image', 'tbl_product.description', 'tbl_product.price')
+            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+            ->select(
+                'id_product',
+                'tbl_product.image',
+                'tbl_product.description',
+                'tbl_product.price',
+                'tbl_product.name')
             ->where('tbl_product.id', '=', $id)
             ->distinct()->get();
         return response()->json($result);
