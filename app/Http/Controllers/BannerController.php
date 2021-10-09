@@ -11,7 +11,6 @@ class BannerController extends Controller
      public function index()
      {
          $result = DB::table('tbl_banner')->select('*')
-
          ->get();
          return response()->json($result);
      }
@@ -34,7 +33,6 @@ class BannerController extends Controller
              ->select(
                 "*"
                  )
-
              ->where('id', '=', $id)
 
              ->get();

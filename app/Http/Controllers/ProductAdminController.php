@@ -81,7 +81,31 @@ class ProductAdminController extends Controller
             ->get();
         return response()->json($result);
     }
-    //Cập nhật một Product theo $id
+    public function showByIdCategory($id)
+    {
+        $result = DB::table('tbl_product')
+            ->join('tbl_category', 'tbl_category.id', '=', 'tbl_product.id_category')
+            ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
+            ->select(
+
+                'tbl_product.id',
+                'tbl_product.id_category',
+                'tbl_product.id_promotion',
+                'tbl_product.name',
+                'tbl_product.price',
+                'tbl_product.description',
+                'tbl_product.like_product',
+                'tbl_category.name as nameCategory',
+                'tbl_product.image',
+                'tbl_promotion.name as namePromotion',
+                'tbl_product.status'
+            )
+            ->where('tbl_category.id', '=', $id)
+            ->distinct('tbl_product.id')
+            ->orderBy('tbl_product.id', 'DESC')
+            ->get();
+        return response()->json($result);
+    }
     public function update(Request $request)
     {
         DB::table('tbl_product')

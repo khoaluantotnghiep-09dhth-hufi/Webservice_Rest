@@ -41,9 +41,11 @@ class ProductInfoController extends Controller
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor',
                 'tbl_product.image',
+                'tbl_product.price',
                 'tbl_product_info.id_size',
                 'tbl_product_info.id_color',
-                'tbl_product_info.id_product'
+                'tbl_product_info.id_product',
+                'tbl_product.description',
             )
             ->where('tbl_product.id', '=', $id)
             ->orderBy('tbl_product.name')

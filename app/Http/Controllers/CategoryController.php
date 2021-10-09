@@ -16,9 +16,14 @@ class CategoryController extends Controller
 
         //     ->select('tbl_sectors.id','tbl_sectors.name','tbl_category.id','tbl_category.name')
         //     ->get();
-        $result = DB::table('tbl_category')->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
+        $result = DB::table('tbl_category')
+            ->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
             ->select(
-                'tbl_category.id', 'tbl_category.name', 'tbl_sectors.name as nameSector', 'tbl_category.id_sectors', 'tbl_category.image'
+                'tbl_category.id',
+                'tbl_category.name',
+                'tbl_sectors.name as nameSector',
+                'tbl_category.id_sectors',
+                'tbl_category.image'
             )
             ->orderBy('tbl_category.id', 'DESC')
             ->get();
