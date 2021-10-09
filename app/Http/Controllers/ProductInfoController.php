@@ -52,6 +52,15 @@ class ProductInfoController extends Controller
             ->get();
         return response()->json($result);
     }
+    public function showProductInfoByIdProduct($id)
+    {
+        $result = DB::table('tbl_product_info')
+            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->select('id_product', 'tbl_product.image', 'tbl_product.description', 'tbl_product.price')
+            ->where('tbl_product.id', '=', $id)
+            ->distinct()->get();
+        return response()->json($result);
+    }
     public function index3()
     {
         $result = DB::table('tbl_product_info')

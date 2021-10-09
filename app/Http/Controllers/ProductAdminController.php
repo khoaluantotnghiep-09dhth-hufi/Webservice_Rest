@@ -14,7 +14,6 @@ class ProductAdminController extends Controller
             ->join('tbl_category', 'tbl_category.id', '=', 'tbl_product.id_category')
             ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
             ->select(
-
                 'tbl_product.id',
                 'tbl_product.id_category',
                 'tbl_product.id_promotion',
