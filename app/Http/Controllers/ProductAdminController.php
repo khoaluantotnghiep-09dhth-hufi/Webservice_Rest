@@ -22,6 +22,7 @@ class ProductAdminController extends Controller
                 'tbl_product.description',
                 'tbl_product.like_product',
                 'tbl_category.name as nameCategory',
+                'tbl_promotion.description as percentSale',
                 'tbl_product.image',
                 'tbl_promotion.name as namePromotion',
                 'tbl_product.status'
