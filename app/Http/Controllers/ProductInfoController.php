@@ -74,13 +74,14 @@ class ProductInfoController extends Controller
             ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
             ->select(
                 'id_product',
-                'tbl_product_info.id',
-                'tbl_color.id',
+                'tbl_color.id as idColor',
                 'tbl_color.name as nameColor',
-                'tbl_size.id',
+                'tbl_size.id as idSize',
                 'tbl_size.name as nameSize',
+                'tbl_product_info.quantity'
             )
             ->where('tbl_product.id', '=', $id)
+            ->where('tbl_product_info.quantity', '>', 0)
             ->get();
         return response()->json($result);
     }
