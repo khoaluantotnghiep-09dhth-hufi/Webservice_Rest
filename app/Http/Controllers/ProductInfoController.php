@@ -58,6 +58,7 @@ class ProductInfoController extends Controller
             ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
             ->select(
                 'id_product',
+                // 'tbl_product_info.id',
                 'tbl_product.image',
                 'tbl_product.description',
                 'tbl_product.price',
@@ -74,6 +75,7 @@ class ProductInfoController extends Controller
             ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
             ->select(
                 'id_product',
+                'tbl_product_info.id',
                 'tbl_color.id as idColor',
                 'tbl_color.name as nameColor',
                 'tbl_size.id as idSize',
