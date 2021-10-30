@@ -37,6 +37,33 @@ class BillInfoController extends Controller
         return response()->json($arrData);
         // return     json_encode($request->all(),true);
     }
+     //Tạo một Bill info mobile
+     public function store_mobile(Request $request)
+     {
+
+        $data = json_decode($request,true);
+        var_dump($data);
+        foreach ($data  as $key => $value) {
+
+            $arrData = array($value);
+            DB::table('tbl_bill_info')->insert($arrData);
+        }
+//   $result=  DB::table('tbl_bill_info')->insert(
+        //         [
+        //             "id" => $request->id_bill_info,
+        //             "id_bill" => $request->id_bill,
+        //             "id_product_info" => $request->id_product_info,
+        //             "into_money" => $request->into_money,
+        //             "quantity" => $request->quantity,
+
+        //         ]
+        //     );
+
+        return response()->json($data);
+
+
+
+     }
     //Lấy một Bill info theo $id
     public function show($id)
     {

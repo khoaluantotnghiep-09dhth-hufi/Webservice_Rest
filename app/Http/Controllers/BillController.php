@@ -64,7 +64,7 @@ class BillController extends Controller
     {
         $result = DB::table('tbl_bill')
 
-            ->where('id', '=', $id)
+            ->where('id_customer', '=', $id)
 
             ->get();
         return response()->json($result);
@@ -81,7 +81,7 @@ class BillController extends Controller
                     'delivery_date'=> $request->delivery_date,
                     'id_staff'=> $request->id_staff,
 
-                 
+
 
                 ]
 

@@ -92,6 +92,7 @@ $router->post('/bill-customer', 'Bill_CustomerController@store');
 //Bill_Info
 $router->get('/bill-info-customer', 'BillInfoController@index');
 $router->post('/bill-info-customer', 'BillInfoController@store');
+$router->post('/bill-info-customer-mobile', 'BillInfoController@store_mobile');
 //Promotion
 $router->get('/promotions', 'PromotionController@index');
 $router->get('/promotions/{id}', 'PromotionController@show');
