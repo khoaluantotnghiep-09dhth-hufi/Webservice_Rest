@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BillInfoController extends Controller
 {
@@ -18,11 +17,19 @@ class BillInfoController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        foreach ($data  as $key => $value) {
-
+        // $data = array(
+        //     "id" => $request->id,
+        //     "id_bill" => $request->id_bill,
+        //     "id_product_info" => $request->id_product_info,
+        //     "into_money" => $request->into_money,
+        //     "quantity" => $request->quantity,
+        // );
+        // DB::table('tbl_bill_info')->insert($data);
+        foreach ($data as $key => $value) {
             $arrData = array($value);
             DB::table('tbl_bill_info')->insert($arrData);
         }
+
         //   $result=  DB::table('tbl_bill_info')->insert(
         //         [
         //             "id" => $request->id_bill_info,
@@ -34,7 +41,7 @@ class BillInfoController extends Controller
         //         ]
         //     );
 
-        return response()->json($arrData);
+        return response()->json($data);
         // return     json_encode($request->all(),true);
     }
      //Tạo một Bill info mobile
@@ -76,7 +83,7 @@ class BillInfoController extends Controller
             ->update(
                 [
                     'id_product_info' => (int) $request->id_product_info,
-                    'quantity'=> $request->quantity,
+                    'quantity' => $request->quantity,
                 ]
             );
 

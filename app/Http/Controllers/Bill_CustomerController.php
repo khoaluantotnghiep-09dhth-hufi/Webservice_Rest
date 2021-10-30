@@ -26,8 +26,6 @@ class Bill_CustomerController extends Controller
                 "total" => $request->total,
                 "status" => $request->status,
                 "id_customer" => $request->id_customer,
-
-
                 "address" => $request->address,
                 "phone" => $request->phone,
                 "email" => $request->email,
