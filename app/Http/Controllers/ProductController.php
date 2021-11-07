@@ -10,7 +10,6 @@ class ProductController extends Controller
     //Lấy tất cả danh sách Product
     public function index()
     {
-
         $result = DB::table('tbl_product as product')
             ->join('tbl_category as c', 'pp.id', '=', 'product.id_category')
             ->join('tbl_promotion as pp', 'pp.id', '=', 'product.id_promotion')

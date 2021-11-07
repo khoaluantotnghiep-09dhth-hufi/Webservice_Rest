@@ -10,6 +10,7 @@ class ProductAdminController extends Controller
     //Lấy tất cả danh sách Product
     public function index()
     {
+        $total = 8;
         $result = DB::table('tbl_product')
             ->join('tbl_category', 'tbl_category.id', '=', 'tbl_product.id_category')
             ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
@@ -27,6 +28,8 @@ class ProductAdminController extends Controller
                 'tbl_promotion.name as namePromotion',
                 'tbl_product.status'
             )
+            ->offset(0)
+            ->limit(10)
             ->distinct('tbl_product.id')
             ->orderBy('tbl_product.id', 'DESC')
             ->get();
