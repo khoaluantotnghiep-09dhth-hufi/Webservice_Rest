@@ -63,7 +63,20 @@ class BillController extends Controller
     public function show($id)
     {
         $result = DB::table('tbl_bill')
-
+            ->join('tbl_bill_info', 'tbl_bill_info.id_bill', '=', 'tbl_bill.id')
+            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_bill_info.id_product_info')
+            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+            ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+            ->select(
+                'tbl_product.image',
+                'tbl_bill_info.quantity',
+                'tbl_product.name',
+                'tbl_bill.status',
+                'tbl_color.name as nameColor',
+                'tbl_size.name as nameSize',
+                'tbl_product.id',
+            )
             ->where('id_customer', '=', $id)
 
             ->get();
@@ -78,10 +91,8 @@ class BillController extends Controller
                 [
                     'status' => (int) $request->status,
 
-                    'delivery_date'=> $request->delivery_date,
-                    'id_staff'=> $request->id_staff,
-
-
+                    'delivery_date' => $request->delivery_date,
+                    'id_staff' => $request->id_staff,
 
                 ]
 

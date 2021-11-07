@@ -23,13 +23,13 @@ class BillInfoController extends Controller
         }
         return response()->json($data);
     }
-     //Tạo một Bill info mobile
-     public function store_mobile(Request $request)
-     {
+    //Tạo một Bill info mobile
+    public function store_mobile(Request $request)
+    {
 
-        $data = json_decode($request,true);
+        $data = json_decode($request, true);
         var_dump($data);
-        foreach ($data  as $key => $value) {
+        foreach ($data as $key => $value) {
 
             $arrData = array($value);
             DB::table('tbl_bill_info')->insert($arrData);
@@ -47,9 +47,7 @@ class BillInfoController extends Controller
 
         return response()->json($data);
 
-
-
-     }
+    }
     //Lấy một Bill info theo $id
     public function show($id)
     {
