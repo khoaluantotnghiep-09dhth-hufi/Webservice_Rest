@@ -69,9 +69,9 @@ class ProductController extends Controller
         //Hàm này để thêm xóa sửa sp
         $result = DB::table('tbl_product')
             ->join('tbl_category', 'tbl_category.id', '=', 'tbl_product.id_category')
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
             ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
             ->join('tbl_product_info', 'tbl_product_info.id_product', '=', 'tbl_product.id')
             ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
             ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
@@ -87,7 +87,7 @@ class ProductController extends Controller
                 //Hàm này để thêm xóa sửa sp
                 'tbl_product.like_product',
                 //Hàm này để thêm xóa sửa sp
-         
+
                 //Hàm này để thêm xóa sửa sp
                 'tbl_category.name as nameCategory',
                 //Hàm này để thêm xóa sửa sp
@@ -99,13 +99,14 @@ class ProductController extends Controller
                 'tbl_size.name as nameSize',
                 'tbl_color.name as nameColor'
             )
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
             ->distinct('tbl_product.id')
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
             ->orderBy('tbl_product.id')
-            //Hàm này để thêm xóa sửa sp
+            ->take(6)
+        //Hàm này để thêm xóa sửa sp
             ->get();
-            //Hàm này để thêm xóa sửa sp
+        //Hàm này để thêm xóa sửa sp
         return response()->json($result);
         //Hàm này để thêm xóa sửa sp
     }
