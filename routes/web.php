@@ -68,6 +68,13 @@ $router->get('/product-info2/{id}', 'ProductInfoController@show');
 //Product
 // $router->get('/products', 'ProductController@index2');
 $router->get('/products/{id}', 'ProductController@show');
+$router->get('/products-top4-men', 'ProductController@get10TopProductMen');
+$router->get('/products-top4-women', 'ProductController@get10TopProductWoMen');
+$router->get('/products-top4-child', 'ProductController@get10TopProductChild');
+$router->get('/products-top4-baby', 'ProductController@get10TopProductBaby');
+
+
+
 $router->post('/products', 'ProductController@store');
 $router->get('/products', 'ProductController@index3');
 $router->delete('/products/{id}', 'ProductController@destroy');

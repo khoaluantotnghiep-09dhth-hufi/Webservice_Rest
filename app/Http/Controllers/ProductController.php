@@ -181,4 +181,121 @@ class ProductController extends Controller
         DB::table('tbl_product')->where('id', '=', $id)->delete();
         return response()->json($id);
     }
+
+    public function get10TopProductMen()
+    {
+        $result = DB::table('tbl_category')
+            ->join('tbl_product', 'tbl_product.id_category', '=', 'tbl_category.id')
+
+
+
+            ->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
+            ->select(
+                'tbl_product.id',
+
+
+                'tbl_product.name',
+                'tbl_product.price',
+                'tbl_product.description',
+                'tbl_product.like_product',
+
+                'tbl_category.name as nameCategory',
+                'tbl_product.image',
+
+            )
+            ->where("tbl_sectors.id_object","object-1")
+
+            ->orderBy('tbl_product.id')
+            ->limit(4)
+            ->get();
+        return response()->json($result);
+
+    }
+
+    public function get10TopProductWoMen()
+    {
+        $result = DB::table('tbl_category')
+            ->join('tbl_product', 'tbl_product.id_category', '=', 'tbl_category.id')
+
+
+
+            ->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
+            ->select(
+                'tbl_product.id',
+
+
+                'tbl_product.name',
+                'tbl_product.price',
+
+
+                'tbl_category.name as nameCategory',
+                'tbl_product.image',
+
+            )
+            ->where("tbl_sectors.id_object","object-2")
+
+            ->orderBy('tbl_product.id')
+            ->limit(4)
+            ->get();
+        return response()->json($result);
+
+    }
+    public function get10TopProductChild()
+    {
+        $result = DB::table('tbl_category')
+            ->join('tbl_product', 'tbl_product.id_category', '=', 'tbl_category.id')
+
+
+
+            ->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
+            ->select(
+                'tbl_product.id',
+
+
+                'tbl_product.name',
+                'tbl_product.price',
+
+
+
+                'tbl_category.name as nameCategory',
+                'tbl_product.image',
+
+            )
+            ->where("tbl_sectors.id_object","object-3")
+
+            ->orderBy('tbl_product.id')
+            ->limit(4)
+            ->get();
+        return response()->json($result);
+
+    }
+    public function get10TopProductBaby()
+    {
+        $result = DB::table('tbl_category')
+            ->join('tbl_product', 'tbl_product.id_category', '=', 'tbl_category.id')
+
+
+
+            ->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
+            ->select(
+                'tbl_product.id',
+
+
+                'tbl_product.name',
+                'tbl_product.price',
+
+
+
+                'tbl_category.name as nameCategory',
+                'tbl_product.image',
+
+            )
+            ->where("tbl_sectors.id_object","object-4")
+
+            ->orderBy('tbl_product.id')
+            ->limit(4)
+            ->get();
+        return response()->json($result);
+
+    }
 }
