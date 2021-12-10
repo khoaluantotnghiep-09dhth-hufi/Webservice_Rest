@@ -51,10 +51,10 @@ class NewsController extends Controller
         return response()->json($result);
     }
     //Cập nhật một Category theo $id
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
         DB::table('tbl_news')
-            ->where('id', $request->idItem)
+            ->where('id', $id)
             ->update(
                 [
                     "title" => $request->title,
@@ -63,7 +63,7 @@ class NewsController extends Controller
                     "descriptionText" => $request->descriptionText,
                     "id_staff" => $request->id_staff,
                     "image" => $request->image,
-                    "image_banner" => $request->image_banner,
+                   
                 ]
 
             );
