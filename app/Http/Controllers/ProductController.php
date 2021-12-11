@@ -103,7 +103,7 @@ class ProductController extends Controller
             ->distinct('tbl_product.id')
         //Hàm này để thêm xóa sửa sp
             ->orderBy('tbl_product.id')
-            ->take(6)
+            // ->take(6)
         //Hàm này để thêm xóa sửa sp
             ->get();
         //Hàm này để thêm xóa sửa sp
@@ -142,8 +142,7 @@ class ProductController extends Controller
                 'tbl_product.name',
                 'tbl_product.price',
                 'tbl_product.description',
-                'tbl_product.like_product',
-                'tbl_product.dislike_product',
+               
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
                 'tbl_promotion.name as namePromotion',
