@@ -185,7 +185,7 @@ class ProductController extends Controller
     {
         $result = DB::table('tbl_category')
             ->join('tbl_product', 'tbl_product.id_category', '=', 'tbl_category.id')
-
+            ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
 
 
             ->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
@@ -197,15 +197,15 @@ class ProductController extends Controller
                 'tbl_product.price',
                 'tbl_product.description',
                 'tbl_product.like_product',
-
+                'tbl_promotion.description as percentSale',
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
 
             )
             ->where("tbl_sectors.id_object","object-1")
 
-            ->orderBy('tbl_product.id')
-            ->limit(4)
+            ->orderBy('tbl_product.id', 'DESC')
+            ->limit(10)
             ->get();
         return response()->json($result);
 
@@ -216,6 +216,7 @@ class ProductController extends Controller
         $result = DB::table('tbl_category')
             ->join('tbl_product', 'tbl_product.id_category', '=', 'tbl_category.id')
 
+            ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
 
 
             ->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
@@ -226,6 +227,7 @@ class ProductController extends Controller
                 'tbl_product.name',
                 'tbl_product.price',
 
+                'tbl_promotion.description as percentSale',
 
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
@@ -233,8 +235,8 @@ class ProductController extends Controller
             )
             ->where("tbl_sectors.id_object","object-2")
 
-            ->orderBy('tbl_product.id')
-            ->limit(4)
+            ->orderBy('tbl_product.id', 'DESC')
+            ->limit(10)
             ->get();
         return response()->json($result);
 
@@ -244,6 +246,7 @@ class ProductController extends Controller
         $result = DB::table('tbl_category')
             ->join('tbl_product', 'tbl_product.id_category', '=', 'tbl_category.id')
 
+            ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
 
 
             ->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
@@ -254,6 +257,7 @@ class ProductController extends Controller
                 'tbl_product.name',
                 'tbl_product.price',
 
+                'tbl_promotion.description as percentSale',
 
 
                 'tbl_category.name as nameCategory',
@@ -262,8 +266,8 @@ class ProductController extends Controller
             )
             ->where("tbl_sectors.id_object","object-3")
 
-            ->orderBy('tbl_product.id')
-            ->limit(4)
+            ->orderBy('tbl_product.id', 'DESC')
+            ->limit(10)
             ->get();
         return response()->json($result);
 
@@ -273,6 +277,7 @@ class ProductController extends Controller
         $result = DB::table('tbl_category')
             ->join('tbl_product', 'tbl_product.id_category', '=', 'tbl_category.id')
 
+            ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
 
 
             ->join('tbl_sectors', 'tbl_sectors.id', '=', 'tbl_category.id_sectors')
@@ -283,6 +288,7 @@ class ProductController extends Controller
                 'tbl_product.name',
                 'tbl_product.price',
 
+                'tbl_promotion.description as percentSale',
 
 
                 'tbl_category.name as nameCategory',
@@ -291,8 +297,8 @@ class ProductController extends Controller
             )
             ->where("tbl_sectors.id_object","object-4")
 
-            ->orderBy('tbl_product.id')
-            ->limit(4)
+            ->orderBy('tbl_product.id', 'DESC')
+            ->limit(10)
             ->get();
         return response()->json($result);
 
