@@ -27,8 +27,6 @@ class ProductAdminController extends Controller
                 'tbl_promotion.name as namePromotion',
                 'tbl_product.status'
             )
-            ->offset(0)
-            ->limit(10)
             ->distinct('tbl_product.id')
             ->orderBy('tbl_product.id', 'DESC')
             ->get();
