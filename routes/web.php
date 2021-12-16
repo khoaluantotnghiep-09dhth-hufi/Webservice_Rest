@@ -85,6 +85,7 @@ $router->get('/products-mobile/{id}', 'ProductAdminController@showByIdCategory')
 $router->get('/products-admin/{id}', 'ProductAdminController@show');
 $router->post('/products-admin', 'ProductAdminController@store');
 $router->get('/products-admin', 'ProductAdminController@index');
+$router->get('/products-adminMobile', 'ProductAdminController@indexMobile');
 $router->delete('/products-admin/{id}', 'ProductAdminController@destroy');
 $router->put('/products-admin/{id}', 'ProductAdminController@update');
 //All Bill for admin
