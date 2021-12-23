@@ -12,6 +12,12 @@
 | and give it the Closure to call when that URI is requested.
 |
  */
+//Rating
+$router->get('/rating', 'RatingController@index');
+$router->get('/rating/{id}', 'RatingController@show');
+$router->post('/rating', 'RatingController@store');
+$router->delete('/rating/{id}', 'RatingController@destroy');
+$router->put('/rating/{id}', 'RatingController@update');
 
 $router->get('/', 'AuthController@index');
 //Banner
@@ -72,8 +78,6 @@ $router->get('/products-top4-men', 'ProductController@get10TopProductMen');
 $router->get('/products-top4-women', 'ProductController@get10TopProductWoMen');
 $router->get('/products-top4-child', 'ProductController@get10TopProductChild');
 $router->get('/products-top4-baby', 'ProductController@get10TopProductBaby');
-
-
 
 $router->post('/products', 'ProductController@store');
 $router->get('/products', 'ProductController@index3');
