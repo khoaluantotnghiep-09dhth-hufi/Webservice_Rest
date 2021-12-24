@@ -106,4 +106,30 @@ class BillController extends Controller
         DB::table('tbl_bill')->where('id', '=', $id)->delete();
         return response()->json($id);
     }
+ //Lấy một Bill Info theo $id
+ public function DetailOrder($id)
+ {
+    $result = DB::table('tbl_bill')
+            ->join('tbl_bill_info', 'tbl_bill_info.id_bill', '=', 'tbl_bill.id')
+            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_bill_info.id_product_info')
+            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+            ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+            ->select(
+                'tbl_product.image',
+                'tbl_bill_info.quantity',
+                'tbl_bill_info.into_money',
+                'tbl_product.name',
+                'tbl_product.price as priceProduct',
+
+                'tbl_color.name as nameColor',
+                'tbl_size.name as nameSize',
+                'tbl_product.name',
+            )
+            ->where('tbl_bill.id', '=', $id)
+
+            ->get();
+        return response()->json($result);
+ }
+
 }

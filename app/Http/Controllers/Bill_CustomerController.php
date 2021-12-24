@@ -39,6 +39,12 @@ class Bill_CustomerController extends Controller
     //Lấy một  Bill_Customer theo $id
     public function show($id)
     {
+        $result = DB::table('tbl_bill')
+            ->select('*')
+            ->where('id_customer', '=', $id)
+            ->get();
+        return response()->json($result);
+
     }
     //Cập nhật một  Bill_Customertheo $id
     public function update($id)

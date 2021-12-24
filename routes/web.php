@@ -96,10 +96,14 @@ $router->put('/products-admin/{id}', 'ProductAdminController@update');
 
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');
+$router->get('/bills-detail/{id}', 'BillController@DetailOrder');
+
 $router->delete('/bills/{id}', 'BillController@destroy');
 $router->put('/bills/{id}', 'BillController@update');
 //Bill_Customer
 $router->get('/bill-customer', 'Bill_CustomerController@index');
+$router->get('/bill-customer/{id}', 'Bill_CustomerController@show');
+
 $router->post('/bill-customer', 'Bill_CustomerController@store');
 //Bill_Info
 $router->get('/bill-info-customer', 'BillInfoController@index');
