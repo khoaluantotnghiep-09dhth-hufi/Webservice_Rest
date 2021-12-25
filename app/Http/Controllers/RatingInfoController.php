@@ -5,15 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class RatingController extends Controller
+class RatingInfoController extends Controller
 {
 
     public function index()
     {
         $result = DB::table('tbl_rating_info')
+            ->join('tbl_bill_info', 'tbl_bill_info.id', '=', 'tbl_rating_info.id_bill_info')
+            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_bill_info.id_product_info')
             ->select(
-                '*'
+                'tbl_rating_info.id',
+                'id_rating',
+                'tbl_rating_info.id_bill_info',
+                'count',
             )
+        // ->avg('count')
             ->get();
         return response()->json($result);
     }
