@@ -98,6 +98,8 @@ $router->get('/products-admin', 'ProductAdminController@index');
 $router->get('/products-adminMobile', 'ProductAdminController@indexMobile');
 $router->delete('/products-admin/{id}', 'ProductAdminController@destroy');
 $router->put('/products-admin/{id}', 'ProductAdminController@update');
+
+$router->get('/products-adminMobileSearch', 'ProductAdminController@indexMobileSearch');
 //All Bill for admin
 
 $router->get('/bills', 'BillController@index');
