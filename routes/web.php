@@ -104,6 +104,7 @@ $router->get('/products-adminMobileSearch', 'ProductAdminController@indexMobileS
 
 $router->get('/bills', 'BillController@index');
 $router->get('/bills/{id}', 'BillController@show');
+$router->get('/bills-wait/{id}', 'BillController@showWaitBill');
 $router->get('/bills-detail/{id}', 'BillController@DetailOrder');
 
 $router->delete('/bills/{id}', 'BillController@destroy');
