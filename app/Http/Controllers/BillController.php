@@ -154,4 +154,21 @@ class BillController extends Controller
         return response()->json($result);
     }
 
+     //Lấy một Bill theo $id
+     public function showBillConfirm($id)
+     {
+         $result = DB::table('tbl_bill')
+            
+             ->select(
+                'tbl_bill.id',
+                'tbl_bill.status',
+                'tbl_bill.order_date',
+                'tbl_bill.delivery_date'
+             )
+             ->where('id', '=', $id)
+ 
+             ->get();
+         return response()->json($result);
+     }
+
 }
