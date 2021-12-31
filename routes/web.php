@@ -92,6 +92,8 @@ $router->put('/products/{id}', 'ProductController@update');
 
 //Product admin
 $router->get('/products-mobile/{id}', 'ProductAdminController@showByIdCategory');
+$router->get('/products-mobile-cart/{id}', 'ProductAdminController@showProductByID');
+
 $router->get('/products-admin/{id}', 'ProductAdminController@show');
 $router->post('/products-admin', 'ProductAdminController@store');
 $router->get('/products-admin', 'ProductAdminController@index');
@@ -103,6 +105,7 @@ $router->get('/products-adminMobileSearch', 'ProductAdminController@indexMobileS
 //All Bill for admin
 
 $router->get('/bills', 'BillController@index');
+$router->get('/bills-confirm/{id}', 'BillController@showBillConfirm');
 $router->get('/bills/{id}', 'BillController@show');
 $router->get('/bills-wait/{id}', 'BillController@showWaitBill');
 $router->get('/bills-detail/{id}', 'BillController@DetailOrder');

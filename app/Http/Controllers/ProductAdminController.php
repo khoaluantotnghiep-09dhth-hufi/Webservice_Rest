@@ -178,4 +178,33 @@ class ProductAdminController extends Controller
         DB::table('tbl_product')->where('id', '=', $id)->delete();
         return response()->json($id);
     }
+
+     //Lấy một Product theo $id
+     public function showProductByID($id)
+     {
+         $result = DB::table('tbl_product')
+             ->join('tbl_category', 'tbl_category.id', '=', 'tbl_product.id_category')
+
+             ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
+
+             ->select(
+                 'tbl_product.id',
+                 'tbl_product.name',
+                 'tbl_product.price',
+                 'tbl_product.description',
+                 'tbl_product.like_product',
+              
+                 'tbl_product.image',
+                 'tbl_product.id_promotion',
+
+                 'tbl_promotion.name as namePromotion',
+                 'tbl_promotion.description as percentSale',
+
+
+             )
+             ->where('tbl_product.id', '=', $id)
+             ->orderBy('tbl_product.id')
+             ->get();
+         return response()->json($result);
+     }
 }
