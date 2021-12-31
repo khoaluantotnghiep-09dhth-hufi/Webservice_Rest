@@ -24,6 +24,7 @@ class BillExchangeController extends Controller
                 'tbl_product.name as nameProduct',
                 'tbl_bill_info.id_product_info as idProductInfo'
             )
+            ->where('status_exchange', '=', '0')
             ->orderBy('tbl_bill_info.id', 'DESC')
             ->get();
         return response()->json($result);
@@ -55,19 +56,19 @@ class BillExchangeController extends Controller
     public function show($id)
     {
         $result = DB::table('tbl_product_info')
-        ->join('tbl_bill_info', 'tbl_bill_info.id_product_info', '=', 'tbl_product_info.id')
-        ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
-        ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
-        ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
-        ->select(
-          'tbl_product_info.id',
-          'tbl_product.name as nameProduct',
-          'tbl_size.name as nameSize',
-          'tbl_color.name as nameColor'
-        )
-        ->where('tbl_bill_info.id', '=', $id)
-        ->get();
-    return response()->json($result);
+            ->join('tbl_bill_info', 'tbl_bill_info.id_product_info', '=', 'tbl_product_info.id')
+            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+            ->select(
+                'tbl_product_info.id',
+                'tbl_product.name as nameProduct',
+                'tbl_size.name as nameSize',
+                'tbl_color.name as nameColor'
+            )
+            ->where('tbl_bill_info.id', '=', $id)
+            ->get();
+        return response()->json($result);
     }
     //Cập Nhật một Bill info theo $id
     public function update(Request $request)

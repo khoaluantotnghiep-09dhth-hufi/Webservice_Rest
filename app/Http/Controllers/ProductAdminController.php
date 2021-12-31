@@ -169,7 +169,7 @@ class ProductAdminController extends Controller
                     'status' => $request->status,
                 ]
 
-            );
+                );
         return response()->json($request);
     }
     //Xóa một Product theo $id
