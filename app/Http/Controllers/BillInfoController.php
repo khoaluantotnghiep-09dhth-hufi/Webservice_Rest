@@ -17,12 +17,12 @@ class BillInfoController extends Controller
     public function store(Request $request)
     {
         // $data = $request->all();
-        $data1 = json_decode($request, true);
-        foreach ($data as $key => $value) {
-            $arrData = array($value);
-            DB::table('tbl_bill_info')->insert($arrData);
-        }
-        return response()->json($data);
+        // $data = json_decode($request, true);
+        // foreach ($data as $key => $value) {
+        //     $arrData = array($value);
+        //     DB::table('tbl_bill_info')->insert($arrData);
+        // }
+        // return response()->json($data);
 
         //   $result=  DB::table('tbl_bill_info')->insert(
         //         [
@@ -34,30 +34,47 @@ class BillInfoController extends Controller
 
         //         ]
         //     );
+
+
+
+        $content = trim(file_get_contents("php://input"));
+        $data =(Array) json_decode($content, true);
+
+        // var_dump($data);
+        dd($data);
+        // die($request);
+
+        foreach ($request->all() as $key => $value) {
+            DB::table('tbl_bill_info')->insert([$value]);}
+
+
+
+
+
+
+        return response()->json($request);
     }
     //Tạo một Bill info mobile
     public function store_mobile(Request $request)
     {
+        // Error do chua parse json khi data post la Json
+        $content = trim(file_get_contents("php://input"));
+        $data =(Array) json_decode($content, true);
 
-        $data = json_decode($request, true);
-        var_dump($data);
-        foreach ($data as $key => $value) {
+        // var_dump($data);
+        // dd($data);
+        // die($request);
 
-            $arrData = array($value);
-            DB::table('tbl_bill_info')->insert($arrData);
-        }
-//   $result=  DB::table('tbl_bill_info')->insert(
-        //         [
-        //             "id" => $request->id_bill_info,
-        //             "id_bill" => $request->id_bill,
-        //             "id_product_info" => $request->id_product_info,
-        //             "into_money" => $request->into_money,
-        //             "quantity" => $request->quantity,
+        foreach ($request->all() as $key => $value) {
+            DB::table('tbl_bill_info')->insert([$value]);}
 
-        //         ]
-        //     );
 
-        return response()->json($data);
+
+
+
+
+        return response()->json($request);
+
 
     }
     //Lấy một Bill info theo $id

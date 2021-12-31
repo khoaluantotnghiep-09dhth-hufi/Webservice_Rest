@@ -142,7 +142,7 @@ class ProductController extends Controller
                 'tbl_product.name',
                 'tbl_product.price',
                 'tbl_product.description',
-               
+               'tbl_product_info.id as id_product_info',
                 'tbl_category.name as nameCategory',
                 'tbl_product.image',
                 'tbl_promotion.name as namePromotion',
