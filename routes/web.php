@@ -92,6 +92,8 @@ $router->put('/products/{id}', 'ProductController@update');
 
 //Product admin
 $router->get('/products-mobile/{id}', 'ProductAdminController@showByIdCategory');
+$router->get('/products-mobile-cart/{id}', 'ProductAdminController@showProductByID');
+
 $router->get('/products-admin/{id}', 'ProductAdminController@show');
 $router->post('/products-admin', 'ProductAdminController@store');
 $router->get('/products-admin', 'ProductAdminController@index');
