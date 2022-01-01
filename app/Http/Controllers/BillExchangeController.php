@@ -24,7 +24,7 @@ class BillExchangeController extends Controller
                 'tbl_product.name as nameProduct',
                 'tbl_bill_info.id_product_info as idProductInfo'
             )
-            ->where('status_exchange', '=', '0')
+            ->where('tbl_bill_info.status_exchange', '=', '0')
             ->orderBy('tbl_bill_info.id', 'DESC')
             ->get();
         return response()->json($result);
@@ -69,10 +69,6 @@ class BillExchangeController extends Controller
             ->where('tbl_bill_info.id', '=', $id)
             ->get();
         return response()->json($result);
-    }
-    //Cập Nhật một Bill info theo $id
-    public function update(Request $request)
-    {
     }
     //Xóa một bill info theo $id
     public function destroy($id)

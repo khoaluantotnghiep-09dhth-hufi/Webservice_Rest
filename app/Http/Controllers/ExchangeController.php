@@ -37,15 +37,15 @@ class ExchangeController extends Controller
             ->get();
         return response()->json($result);
     }
-   
+
     public function store(Request $request)
     {
         DB::table('tbl_product_exchange')->insert(
             [
                 "id" => $request->id,
                 "id_bill_info" => $request->id_bill_info,
-                "id_staff_change" => $request->id_staff_change,
                 "reason" => $request->reason,
+                "id_staff_change" => $request->id_staff_change,
             ]
         );
         return response()->json($request);
@@ -78,7 +78,7 @@ class ExchangeController extends Controller
             ->get();
         return response()->json($result);
     }
-    
+
     public function update(Request $request)
     {
         DB::table('tbl_product_exchange')
@@ -89,11 +89,10 @@ class ExchangeController extends Controller
                     "id_bill_info" => $request->id_bill_info,
                     "reason" => $request->reason,
                 ]
-
             );
         return response()->json($request);
     }
-   
+
     public function destroy($id)
     {
         DB::table('tbl_product_exchange')->where('id', '=', $id)->delete();

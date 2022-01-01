@@ -187,6 +187,7 @@ $router->get('/exchange/{id}', 'ExchangeController@show');
 $router->post('/exchange', 'ExchangeController@store');
 $router->delete('/exchange/{id}', 'ExchangeController@destroy');
 $router->put('/exchange/{id}', 'ExchangeController@update');
+$router->put('/exchange-bill-status/{id}', 'BillExchangeController@updateExchange');
 
 //Notification
 $router->get('/notifications', 'NotificationController@index');
