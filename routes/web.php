@@ -85,6 +85,8 @@ $router->get('/products-top4-women', 'ProductController@get10TopProductWoMen');
 $router->get('/products-top4-child', 'ProductController@get10TopProductChild');
 $router->get('/products-top4-baby', 'ProductController@get10TopProductBaby');
 
+$router->post('/web-search', 'ProductController@getSearchWeb');
+
 $router->post('/products', 'ProductController@store');
 $router->get('/products', 'ProductController@index3');
 $router->delete('/products/{id}', 'ProductController@destroy');

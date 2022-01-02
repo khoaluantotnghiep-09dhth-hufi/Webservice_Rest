@@ -303,4 +303,31 @@ class ProductController extends Controller
         return response()->json($result);
 
     }
+
+    public function getSearchWeb(Request $request)
+    {
+
+
+        $result = DB::table('tbl_product')
+            ->join('tbl_category', 'tbl_product.id_category', '=', 'tbl_category.id')
+            ->join('tbl_promotion','tbl_product.id_promotion', '=', 'tbl_promotion.id')
+            ->select(
+                'tbl_product.id',
+                'tbl_product.name',
+                'tbl_product.price',
+                'tbl_product.image',
+                'tbl_promotion.description as percentSale',
+            )
+            ->where("tbl_category.name", 'like', "%{$request->keySearch}%")
+
+
+
+            ->get();
+
+        // return response()->json(json_encode($result,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
+        return response()->json($result);
+
+
+    }
+
 }
