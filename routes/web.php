@@ -216,6 +216,8 @@ $router->get('/test', function () {
     return "Test successful";
 });
 
+$router->post('/login-web', 'CustomerController@login');
+
 // $router->post('/login', 'AuthController@postLogin');
 // $router->group(['middleware' => 'auth:api'], function ($app) {
 //     $app->get('/test', function () {

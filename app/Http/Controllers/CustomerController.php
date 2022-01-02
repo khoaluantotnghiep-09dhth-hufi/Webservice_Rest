@@ -85,4 +85,17 @@ class CustomerController extends Controller
             ->delete();
         return response()->json($id);
     }
+
+     //login
+     public function login(Request $request)
+     {
+         $result = DB::table("tbl_customer")
+         ->where("tbl_customer.phone", "=", $request->phone)
+         ->where("tbl_customer.password", "=" ,$request->password)
+         // ->select('tbl_customer.id')
+         ->get();
+        //  dd($result);
+         
+            return response()->json($result);
+     }
 }
