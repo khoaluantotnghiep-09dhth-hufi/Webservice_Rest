@@ -56,8 +56,8 @@ class ProductInfoController extends Controller
     {
         $result = DB::table('tbl_product_info')
             ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
-             //Join table promotion để tính giá khuyến mãi
-             ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
+        //Join table promotion để tính giá khuyến mãi
+            ->join('tbl_promotion', 'tbl_promotion.id', '=', 'tbl_product.id_promotion')
             ->select(
                 'id_product',
                 'tbl_promotion.description as percentSale',
@@ -85,7 +85,6 @@ class ProductInfoController extends Controller
                 'tbl_size.id as idSize',
                 'tbl_size.name as nameSize',
                 'tbl_product_info.quantity',
-
             )
             ->where('tbl_product.id', '=', $id)
             ->where('tbl_product_info.quantity', '>', 0)
