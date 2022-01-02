@@ -303,10 +303,16 @@ class ProductController extends Controller
         return response()->json($result);
 
     }
-
-    public function getSearchWeb(Request $request)
+public function encodeURI($uri)
+{
+    return preg_replace_callback("{[^0-9a-z_.!~*'();,/?:@&=+$#-]}i", function ($m) {
+        return sprintf('%%%02X', ord($m[0]));
+    }, $uri);
+}
+    public function getSearchWeb($keySearch)
     {
-
+$value=urldecode($keySearch);
+        // dd($test);
 
         $result = DB::table('tbl_product')
             ->join('tbl_category', 'tbl_product.id_category', '=', 'tbl_category.id')
@@ -318,12 +324,8 @@ class ProductController extends Controller
                 'tbl_product.image',
                 'tbl_promotion.description as percentSale',
             )
-            ->where("tbl_category.name", 'like', "%{$request->keySearch}%")
-
-
-
+            ->where("tbl_category.name", 'like', "%{$value}%")
             ->get();
-
         // return response()->json(json_encode($result,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
         return response()->json($result);
 
