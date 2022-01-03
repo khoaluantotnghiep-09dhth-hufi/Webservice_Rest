@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\DB;
 class StaffController extends Controller
 {
     //Lấy tất cả danh sách Staff
+    public function login(Request $request)
+    {
+        $result = DB::table("tbl_staff")
+            ->where("tbl_staff.email", "=", $request->txtEmail)
+            ->where("tbl_staff.password", "=", $request->txtPassword)
+            ->get();
+        return response()->json($result);
+    }
     public function index()
     {
         $result = DB::table('tbl_staff')

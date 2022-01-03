@@ -138,6 +138,7 @@ $router->put('/customers/{id}', 'CustomerController@update');
 $router->put('/customers_client/{id}', 'CustomerClientController@update');
 $router->delete('/customers/{id}', 'CustomerController@destroy');
 //staff
+$router->post('/login-admin', 'StaffController@login');
 $router->get('/staffs', 'StaffController@index');
 $router->get('/staffs/{id}', 'StaffController@show');
 $router->post('/staffs', 'StaffController@store');
