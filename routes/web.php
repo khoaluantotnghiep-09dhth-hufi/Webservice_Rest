@@ -107,6 +107,10 @@ $router->get('/products-adminMobileSearch', 'ProductAdminController@indexMobileS
 //All Bill for admin
 
 $router->get('/bills', 'BillController@index');
+$router->get('/bills-delivered', 'BillController@indexDelivered');
+$router->get('/bills-delivering', 'BillController@indexDelivering');
+$router->get('/bills-waite-take', 'BillController@indexWaitTake');
+$router->get('/bills-exchange-request', 'BillController@indexExchangeRequest');
 $router->get('/bills-confirm/{id}', 'BillController@showBillConfirm');
 $router->get('/bills/{id}', 'BillController@show');
 $router->get('/bills-wait/{id}', 'BillController@showWaitBill');

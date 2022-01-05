@@ -13,6 +13,34 @@ class BillController extends Controller
         $result = DB::table('tbl_bill')->select('*')->get();
         return response()->json($result);
     }
+    public function indexDelivered()
+    {
+        $result = DB::table('tbl_bill')->select('*')
+            ->where('status', '=', '4')
+            ->get();
+        return response()->json($result);
+    }
+    public function indexDelivering()
+    {
+        $result = DB::table('tbl_bill')->select('*')
+            ->where('status', '=', '3')
+            ->get();
+        return response()->json($result);
+    }
+    public function indexWaitTake()
+    {
+        $result = DB::table('tbl_bill')->select('*')
+            ->where('status', '=', '2')
+            ->get();
+        return response()->json($result);
+    }
+    public function indexExchangeRequest()
+    {
+        $result = DB::table('tbl_bill')->select('*')
+            ->where('status', '=', '5')
+            ->get();
+        return response()->json($result);
+    }
     public function index2()
     {
         $result = DB::table('tbl_bill')
@@ -154,21 +182,21 @@ class BillController extends Controller
         return response()->json($result);
     }
 
-     //Lấy một Bill theo $id
-     public function showBillConfirm($id)
-     {
-         $result = DB::table('tbl_bill')
-            
-             ->select(
+    //Lấy một Bill theo $id
+    public function showBillConfirm($id)
+    {
+        $result = DB::table('tbl_bill')
+
+            ->select(
                 'tbl_bill.id',
                 'tbl_bill.status',
                 'tbl_bill.order_date',
                 'tbl_bill.delivery_date'
-             )
-             ->where('id', '=', $id)
- 
-             ->get();
-         return response()->json($result);
-     }
+            )
+            ->where('id', '=', $id)
+
+            ->get();
+        return response()->json($result);
+    }
 
 }
