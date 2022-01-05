@@ -24,7 +24,7 @@ class BillExchangeController extends Controller
                 'tbl_product.name as nameProduct',
                 'tbl_bill_info.id_product_info as idProductInfo'
             )
-            ->where('tbl_bill.status', '=', '0')
+            ->where('tbl_bill_info.status_exchange', '=', '0')
             ->orderBy('tbl_bill_info.id', 'DESC')
             ->get();
         return response()->json($result);
