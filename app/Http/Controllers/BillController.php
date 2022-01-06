@@ -105,12 +105,12 @@ class BillController extends Controller
                 'tbl_size.name as nameSize',
                 'tbl_product.id',
             )
-            ->where('id_customer', '=', $id, 'and status = 1')
-
+            ->where('id_customer', '=', $id)
+            ->where('status', '=', 1)
             ->get();
         return response()->json($result);
     }
-    public function showWaitBill($id)
+    public function showWaitBill(Request $request)
     {
         $result = DB::table('tbl_bill')
             ->join('tbl_bill_info', 'tbl_bill_info.id_bill', '=', 'tbl_bill.id')
@@ -118,6 +118,7 @@ class BillController extends Controller
             ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
             ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
             ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+            ->join('tbl_customer', 'tbl_customer.id', '=', 'tbl_bill.id_customer')
             ->select(
                 'tbl_product.image',
                 'tbl_bill_info.quantity',
@@ -126,9 +127,57 @@ class BillController extends Controller
                 'tbl_color.name as nameColor',
                 'tbl_size.name as nameSize',
                 'tbl_product.id',
+                'tbl_bill.id_customer'
             )
-            ->where('id_customer', '=', $id, 'and status = 0')
-
+            ->where('tbl_bill.id_customer', '=', $request->id_customer)
+            ->get();
+        return response()->json($result);
+    }
+    public function showDelivered(Request $request)
+    {
+        $result = DB::table('tbl_bill')
+            ->join('tbl_bill_info', 'tbl_bill_info.id_bill', '=', 'tbl_bill.id')
+            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_bill_info.id_product_info')
+            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+            ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+            ->join('tbl_customer', 'tbl_customer.id', '=', 'tbl_bill.id_customer')
+            ->select(
+                'tbl_product.image',
+                'tbl_bill_info.quantity',
+                'tbl_product.name',
+                'tbl_bill.status',
+                'tbl_color.name as nameColor',
+                'tbl_size.name as nameSize',
+                'tbl_product.id',
+                'tbl_bill.id_customer'
+            )
+            ->where('tbl_bill.id_customer', '=', $request->id_customer)
+            ->where('tbl_bill.status', '=', 4)
+            ->get();
+        return response()->json($result);
+    }
+    public function showDelivering(Request $request)
+    {
+        $result = DB::table('tbl_bill')
+            ->join('tbl_bill_info', 'tbl_bill_info.id_bill', '=', 'tbl_bill.id')
+            ->join('tbl_product_info', 'tbl_product_info.id', '=', 'tbl_bill_info.id_product_info')
+            ->join('tbl_product', 'tbl_product.id', '=', 'tbl_product_info.id_product')
+            ->join('tbl_color', 'tbl_color.id', '=', 'tbl_product_info.id_color')
+            ->join('tbl_size', 'tbl_size.id', '=', 'tbl_product_info.id_size')
+            ->join('tbl_customer', 'tbl_customer.id', '=', 'tbl_bill.id_customer')
+            ->select(
+                'tbl_product.image',
+                'tbl_bill_info.quantity',
+                'tbl_product.name',
+                'tbl_bill.status',
+                'tbl_color.name as nameColor',
+                'tbl_size.name as nameSize',
+                'tbl_product.id',
+                'tbl_bill.id_customer'
+            )
+            ->where('tbl_bill.id_customer', '=', $request->id_customer)
+            ->where('tbl_bill.status', '=', 3)
             ->get();
         return response()->json($result);
     }
