@@ -22,9 +22,11 @@ class BillExchangeController extends Controller
                 'tbl_bill_info.quantity',
                 'tbl_bill_info.into_money',
                 'tbl_product.name as nameProduct',
-                'tbl_bill_info.id_product_info as idProductInfo'
+                'tbl_bill_info.id_product_info as idProductInfo',
+                'tbl_bill.status',
             )
             ->where('tbl_bill_info.status_exchange', '=', '0')
+            ->where('tbl_bill.status', '=', '5')
             ->orderBy('tbl_bill_info.id', 'DESC')
             ->get();
         return response()->json($result);
@@ -64,7 +66,7 @@ class BillExchangeController extends Controller
                 'tbl_product_info.id',
                 'tbl_product.name as nameProduct',
                 'tbl_size.name as nameSize',
-                'tbl_color.name as nameColor'
+                'tbl_color.name as nameColor',
             )
             ->where('tbl_bill_info.id', '=', $id)
             ->get();
