@@ -28,7 +28,7 @@ class ProductAdminController extends Controller
                 'tbl_product.status'
             )
             ->distinct('tbl_product.id')
-            ->orderBy('tbl_product.id', 'DESC')
+            ->orderBy('tbl_product.name', 'DESC')
             ->get();
         return response()->json($result);
     }
@@ -53,7 +53,7 @@ class ProductAdminController extends Controller
             )
             ->limit(20)
             ->distinct('tbl_product.id')
-            ->orderBy('tbl_product.id', 'DESC')
+            ->orderBy('tbl_product.name', 'DESC')
             ->get();
         return response()->json($result);
     }
@@ -125,7 +125,7 @@ class ProductAdminController extends Controller
                 'tbl_product.status'
             )
             ->where('tbl_product.id', '=', $id)
-            ->orderBy('tbl_product.id')
+            ->orderBy('tbl_product.name')
             ->get();
         return response()->json($result);
     }
@@ -150,7 +150,7 @@ class ProductAdminController extends Controller
             )
             ->where('tbl_category.id', '=', $id)
             ->distinct('tbl_product.id')
-            ->orderBy('tbl_product.id', 'DESC')
+            ->orderBy('tbl_product.name', 'DESC')
             ->get();
         return response()->json($result);
     }
@@ -193,7 +193,7 @@ class ProductAdminController extends Controller
                  'tbl_product.price',
                  'tbl_product.description',
                  'tbl_product.like_product',
-              
+
                  'tbl_product.image',
                  'tbl_product.id_promotion',
 

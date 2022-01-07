@@ -135,6 +135,8 @@ $router->delete('/promotions/{id}', 'PromotionController@destroy');
 $router->put('/promotions/{id}', 'PromotionController@update');
 //customer
 $router->get('/customers', 'CustomerController@index');
+
+$router->put('/customer-score/{id}', 'CustomerController@updateScore');
 $router->get('/customers/{id}', 'CustomerController@show');
 $router->post('/customers', 'CustomerController@store');
 $router->post('/customers_client', 'CustomerClientController@store');

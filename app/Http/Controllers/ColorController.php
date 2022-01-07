@@ -11,7 +11,7 @@ class ColorController extends Controller
     public function index()
     {
         $result = DB::table('tbl_color')->select('*')
-        ->orderBy('tbl_color.id', 'DESC')
+        ->orderBy('tbl_color.name', 'ASC')
         ->get();
         return response()->json($result);
     }

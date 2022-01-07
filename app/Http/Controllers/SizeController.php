@@ -11,7 +11,7 @@ class SizeController extends Controller
     public function index()
     {
         $result = DB::table('tbl_size')->select('*')
-        ->orderBy('tbl_size.id', 'DESC')
+        ->orderBy('tbl_size.name', 'ASC')
         ->get();
         return response()->json($result);
     }

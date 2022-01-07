@@ -13,6 +13,7 @@ class StaffController extends Controller
         $result = DB::table("tbl_staff")
             ->where("tbl_staff.email", "=", $request->txtEmail)
             ->where("tbl_staff.password", "=", $request->txtPassword)
+            ->orderBy('tbl_staff.name', 'DESC')
             ->get();
         return response()->json($result);
     }

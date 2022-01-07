@@ -12,7 +12,7 @@ class PromotionController extends Controller
     public function index()
     {
         $result = DB::table('tbl_promotion')->select('*')
-        ->orderBy('tbl_promotion.id', 'DESC')
+        ->orderBy('tbl_promotion.name', 'DESC')
         ->get();
         return response()->json($result);
     }

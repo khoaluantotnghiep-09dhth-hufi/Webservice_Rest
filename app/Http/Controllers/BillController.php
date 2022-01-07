@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class BillController extends Controller
 {
     //Lấy tất cả danh sách Bill
@@ -200,8 +201,42 @@ class BillController extends Controller
         return response()->json($request);
     }
     //Xóa một Size theo $id
+    function TrimTrailingZeroes($nbr) {
+        return strpos($nbr,'.')!==false ? rtrim(rtrim($nbr,'0'),'.') : $nbr;
+    }
+
     public function destroy($id)
     {
+        // Lấy Score của Khách
+        $scoreCustomerByID = DB::table('tbl_bill')
+        ->join('tbl_customer', 'tbl_customer.id', '=', 'tbl_bill.id_customer')
+        ->where('tbl_bill.id', $id)->select('tbl_customer.score')->get();
+
+// Lấy total money của cái đơn muốn huỷ
+        $totalMoneyBillNow=DB::table('tbl_bill')
+        ->where('tbl_bill.id', $id)->select('tbl_bill.total')->get();
+// Xử lý chuỗ do bị vd: 1001.0
+        $trimFormatScore=strpos($totalMoneyBillNow[0]->total,'.')!==false ? rtrim(rtrim($totalMoneyBillNow[0]->total,'0'),'.') : $totalMoneyBillNow[0]->total;;
+
+//Tính Điểm của cái đơn muốn huỷ
+        $scoreCalculator=ceil($trimFormatScore/10000);
+// Kết quả điểm đã ra cần Update
+        $scoreBillNow=$scoreCustomerByID[0]->score - $scoreCalculator;
+
+      $result=  DB::table('tbl_bill')
+      ->join('tbl_customer', 'tbl_customer.id', '=', 'tbl_bill.id_customer')
+      ->where('tbl_bill.id', $id)
+        ->update(
+            [
+
+                'tbl_customer.score' => (int)$scoreBillNow,
+            ]
+        );
+//debuge trong PostMan khi request API : dd($example),var_dump($example)
+// dd((int)$scoreBillNow);
+// XOá sản phẩm xong bill-info trước
+        DB::table('tbl_bill_info')->where('id_bill', '=', $id)->delete();
+        //Xoá Bill
         DB::table('tbl_bill')->where('id', '=', $id)->delete();
         return response()->json($id);
     }
@@ -240,7 +275,12 @@ class BillController extends Controller
                 'tbl_bill.id',
                 'tbl_bill.status',
                 'tbl_bill.order_date',
-                'tbl_bill.delivery_date'
+                'tbl_bill.delivery_date',
+                'tbl_bill.total',
+                'tbl_bill.id_customer',
+
+
+
             )
             ->where('id', '=', $id)
 
@@ -248,4 +288,14 @@ class BillController extends Controller
         return response()->json($result);
     }
 
+ public   function removeZeroDigitsFromDecimal($number, $decimal_sep = '.')
+{
+    $explode_num = explode($decimal_sep, $number);
+    if (is_array($explode_num) && isset($explode_num[count($explode_num)-1]) && intval($explode_num[count($explode_num)-1]) === 0) {
+        unset($explode_num[count($explode_num)-1]);
+        $number = implode($decimal_sep, $explode_num);
+    }
+    unset($explode_num);
+    return (string) $number;
+}
 }

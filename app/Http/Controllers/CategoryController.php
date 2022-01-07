@@ -25,7 +25,7 @@ class CategoryController extends Controller
                 'tbl_category.id_sectors',
                 'tbl_category.image'
             )
-            ->orderBy('tbl_category.id', 'DESC')
+            ->orderBy('tbl_category.name', 'ASC')
             ->get();
         return response()->json($result);
     }

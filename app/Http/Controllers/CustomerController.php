@@ -53,6 +53,7 @@ class CustomerController extends Controller
     //Lấy một Customer theo $id
     public function show($id)
     {
+
         $result = DB::table("tbl_customer")
             ->where("id", "=", $id)
         // ->select('tbl_customer.id')
@@ -92,10 +93,51 @@ class CustomerController extends Controller
          $result = DB::table("tbl_customer")
          ->where("tbl_customer.phone", "=", $request->phone)
          ->where("tbl_customer.password", "=" ,$request->password)
-         // ->select('tbl_customer.id')
+
          ->get();
+
         //  dd($result);
-         
+
             return response()->json($result);
      }
+
+      //Cập nhật một Customer theo $id
+      public function updateScore(Request $request,$id)
+      {
+
+          $scoreCustomerByID = DB::table('tbl_customer')
+          ->where('id', $id)->select('tbl_customer.score')->get();
+
+          $scoreNew=$scoreCustomerByID[0]->score+$request->score;
+
+          DB::table('tbl_customer')
+          ->where('id', $id)
+          ->update(
+              [
+
+                  'tbl_customer.score' => $scoreNew,
+              ]
+          );
+          return response()->json($request);
+      }
+
+
+      public function updateDeleteScore(Request $request,$id)
+      {
+
+          $scoreCustomerByID = DB::table('tbl_customer')
+          ->where('id', $id)->select('tbl_customer.score')->get();
+
+          $scoreNew=$scoreCustomerByID[0]->score-$request->score;
+
+          DB::table('tbl_customer')
+          ->where('id', $id)
+          ->update(
+              [
+
+                  'tbl_customer.score' => $scoreNew,
+              ]
+          );
+          return response()->json($request);
+      }
 }

@@ -14,6 +14,7 @@ class CustomerClientController extends Controller
         $result = DB::table('tbl_customer as c')
             ->join('tbl_bill as b', 'c.id', '=', 'b.id_customer')
             ->select('*')
+            ->orderBy('tbl_customer.name', 'DESC')
             ->get();
         return response()->json($result);
     }
@@ -25,7 +26,7 @@ class CustomerClientController extends Controller
         ->get();
         return response()->json($result);
     }
-    
+
     //Tạo một Customer
     public function store(Request $request)
     {
@@ -79,4 +80,6 @@ class CustomerClientController extends Controller
         ->delete();
         return response()->json($id);
     }
+
+
 }

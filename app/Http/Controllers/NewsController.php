@@ -21,7 +21,7 @@ class NewsController extends Controller
                 'tbl_news.descriptionHTML',
                 'tbl_news.descriptionText'
             )
-            ->orderBy('tbl_news.id', 'DESC')
+            ->orderBy('tbl_news.title', 'DESC')
             ->get();
         return response()->json($result);
     }
@@ -63,7 +63,7 @@ class NewsController extends Controller
                     "descriptionText" => $request->descriptionText,
                     "id_staff" => $request->id_staff,
                     "image" => $request->image,
-                   
+
                 ]
 
             );
