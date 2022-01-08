@@ -61,13 +61,9 @@ class CustomerClientController extends Controller
         ->where('id', $request->id)
         ->update(
             [
-                'name' => $request->name,
-                'address' => $request->address,
-                'phone' => $request->phone,
-                'image' => $request->image,
+
                 'password' => $request->password,
-                'email' => $request->email,
-                'gender' => $request->gender,
+             
             ]
         );
         return response()->json($request);

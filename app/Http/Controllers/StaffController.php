@@ -13,7 +13,7 @@ class StaffController extends Controller
         $result = DB::table("tbl_staff")
             ->where("tbl_staff.email", "=", $request->txtEmail)
             ->where("tbl_staff.password", "=", $request->txtPassword)
-            ->orderBy('tbl_staff.name', 'DESC')
+            ->orderBy('tbl_staff.name', 'ASC')
             ->get();
         return response()->json($result);
     }
@@ -23,7 +23,7 @@ class StaffController extends Controller
             ->select(
                 '*'
             )
-            ->orderBy('tbl_staff.id', 'DESC')
+            ->orderBy('tbl_staff.id', 'ASC')
             ->get();
         return response()->json($result);
     }
@@ -47,7 +47,7 @@ class StaffController extends Controller
                     "email" => $request->email,
                     "phone" => $request->phone,
                     "address" => $request->address,
-                    "password" => '123456',
+                    "password" => $request->password,
                     "role" => 1,
                     "image" => $request->image,
                 ]
@@ -92,6 +92,8 @@ class StaffController extends Controller
                     "email" => $request->email,
                     "phone" => $request->phone,
                     "address" => $request->address,
+                    "password" => $request->password,
+
                     "image" => $request->image,
                 ]
 
