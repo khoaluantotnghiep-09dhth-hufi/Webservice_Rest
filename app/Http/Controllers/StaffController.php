@@ -11,9 +11,9 @@ class StaffController extends Controller
     public function login(Request $request)
     {
         $result = DB::table("tbl_staff")
-            ->where("tbl_staff.email", "=", $request->txtEmail)
-            ->where("tbl_staff.password", "=", $request->txtPassword)
-            ->orderBy('tbl_staff.name', 'ASC')
+            ->select('*')
+            ->where("tbl_staff.email", "=", $request->phone)
+            ->where("tbl_staff.password", "=", $request->password)
             ->get();
         return response()->json($result);
     }

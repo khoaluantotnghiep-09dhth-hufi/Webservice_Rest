@@ -224,6 +224,7 @@ $router->get('/test', function () {
 });
 
 $router->post('/login-web', 'CustomerController@login');
+$router->post('/login-admin', 'StaffController@login');
 
 // $router->post('/login', 'AuthController@postLogin');
 // $router->group(['middleware' => 'auth:api'], function ($app) {

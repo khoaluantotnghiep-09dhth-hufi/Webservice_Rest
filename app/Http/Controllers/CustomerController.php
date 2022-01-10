@@ -87,57 +87,56 @@ class CustomerController extends Controller
         return response()->json($id);
     }
 
-     //login
-     public function login(Request $request)
-     {
-         $result = DB::table("tbl_customer")
-         ->where("tbl_customer.phone", "=", $request->phone)
-         ->where("tbl_customer.password", "=" ,$request->password)
+    //login
+    public function login(Request $request)
+    {
+        $result = DB::table("tbl_customer")
+            ->where("tbl_customer.phone", "=", $request->phone)
+            ->where("tbl_customer.password", "=", $request->password)
 
-         ->get();
+            ->get();
 
         //  dd($result);
 
-            return response()->json($result);
-     }
+        return response()->json($result);
+    }
 
-      //Cập nhật một Customer theo $id
-      public function updateScore(Request $request,$id)
-      {
+    //Cập nhật một Customer theo $id
+    public function updateScore(Request $request, $id)
+    {
 
-          $scoreCustomerByID = DB::table('tbl_customer')
-          ->where('id', $id)->select('tbl_customer.score')->get();
+        $scoreCustomerByID = DB::table('tbl_customer')
+            ->where('id', $id)->select('tbl_customer.score')->get();
 
-          $scoreNew=$scoreCustomerByID[0]->score+$request->score;
+        $scoreNew = $scoreCustomerByID[0]->score + $request->score;
 
-          DB::table('tbl_customer')
-          ->where('id', $id)
-          ->update(
-              [
+        DB::table('tbl_customer')
+            ->where('id', $id)
+            ->update(
+                [
 
-                  'tbl_customer.score' => $scoreNew,
-              ]
-          );
-          return response()->json($request);
-      }
+                    'tbl_customer.score' => $scoreNew,
+                ]
+            );
+        return response()->json($request);
+    }
 
+    public function updateDeleteScore(Request $request, $id)
+    {
 
-      public function updateDeleteScore(Request $request,$id)
-      {
+        $scoreCustomerByID = DB::table('tbl_customer')
+            ->where('id', $id)->select('tbl_customer.score')->get();
 
-          $scoreCustomerByID = DB::table('tbl_customer')
-          ->where('id', $id)->select('tbl_customer.score')->get();
+        $scoreNew = $scoreCustomerByID[0]->score - $request->score;
 
-          $scoreNew=$scoreCustomerByID[0]->score-$request->score;
+        DB::table('tbl_customer')
+            ->where('id', $id)
+            ->update(
+                [
 
-          DB::table('tbl_customer')
-          ->where('id', $id)
-          ->update(
-              [
-
-                  'tbl_customer.score' => $scoreNew,
-              ]
-          );
-          return response()->json($request);
-      }
+                    'tbl_customer.score' => $scoreNew,
+                ]
+            );
+        return response()->json($request);
+    }
 }
