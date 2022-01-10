@@ -128,7 +128,8 @@ class BillController extends Controller
                 'tbl_bill.status',
                 'tbl_color.name as nameColor',
                 'tbl_size.name as nameSize',
-                'tbl_product.id',
+                'tbl_product.id as idProduct',
+                'tbl_bill.id',
                 'tbl_bill.id_customer'
             )
             ->where('tbl_bill.id_customer', '=', $request->id_user)
@@ -137,11 +138,12 @@ class BillController extends Controller
     }
     public function updateStatusToExchange(Request $request)
     {
-        DB::table('tbl_bill')
-            ->where('id', $request->id)
+$statusID=5;
+       $result= DB::table('tbl_bill')
+            ->where('tbl_bill.id', $request->id)
             ->update(
                 [
-                    'status = 5',
+                    'status'=>$statusID
                 ]
 
             );

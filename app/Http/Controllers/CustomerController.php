@@ -66,16 +66,15 @@ class CustomerController extends Controller
     public function update(Request $request)
     {
 
-        $passwordMd5 = md5($request->password);
+        
         DB::table('tbl_customer')
-            ->where('id', $request->idItem)
+            ->where('id', $request->id)
             ->update(
                 [
                     'name' => $request->name,
                     'address' => $request->address,
                     'phone' => $request->phone,
                     'image' => $request->image,
-                    'password' => $passwordMd5,
                     'email' => $request->email,
                     'gender' => $request->gender,
                 ]
