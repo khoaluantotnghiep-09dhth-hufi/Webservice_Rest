@@ -88,6 +88,7 @@ class ProductInfoController extends Controller
             )
             ->where('tbl_product.id', '=', $id)
             ->where('tbl_product_info.quantity', '>', 0)
+            ->distinct('tbl_size.name')
             ->get();
         return response()->json($result);
     }

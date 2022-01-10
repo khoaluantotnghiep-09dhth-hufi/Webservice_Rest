@@ -113,7 +113,8 @@ $router->get('/bills-waite-take', 'BillController@indexWaitTake');
 $router->get('/bills-exchange-request', 'BillController@indexExchangeRequest');
 $router->get('/bills-confirm/{id}', 'BillController@showBillConfirm');
 $router->get('/bills/{id}', 'BillController@show');
-$router->get('/bills-wait', 'BillController@showWaitBill');
+$router->post('/bills-wait', 'BillController@showWaitBill');
+$router->put('/bills-exchange-update', 'BillController@updateStatusToExchange');
 $router->get('/bills-detail/{id}', 'BillController@DetailOrder');
 
 $router->delete('/bills/{id}', 'BillController@destroy');
