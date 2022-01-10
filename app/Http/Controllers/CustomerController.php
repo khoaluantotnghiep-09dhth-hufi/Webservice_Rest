@@ -35,6 +35,8 @@ class CustomerController extends Controller
     //Tạo một Customer
     public function store(Request $request)
     {
+        $passwordMd5 = md5($request->password);
+
         DB::table('tbl_customer')
             ->insert(
                 [
@@ -43,7 +45,7 @@ class CustomerController extends Controller
                     'address' => $request->address,
                     'phone' => $request->phone,
                     'image' => $request->image,
-                    'password' => '123456',
+                    'password' =>  $passwordMd5,
                     'email' => $request->email,
                     'gender' => $request->gender,
                 ]
@@ -63,6 +65,8 @@ class CustomerController extends Controller
     //Cập nhật một Customer theo $id
     public function update(Request $request)
     {
+
+        $passwordMd5 = md5($request->password);
         DB::table('tbl_customer')
             ->where('id', $request->idItem)
             ->update(
@@ -71,7 +75,7 @@ class CustomerController extends Controller
                     'address' => $request->address,
                     'phone' => $request->phone,
                     'image' => $request->image,
-                    'password' => $request->password,
+                    'password' => $passwordMd5,
                     'email' => $request->email,
                     'gender' => $request->gender,
                 ]
@@ -90,9 +94,10 @@ class CustomerController extends Controller
     //login
     public function login(Request $request)
     {
+        $passwordMd5 = md5($request->password);
         $result = DB::table("tbl_customer")
             ->where("tbl_customer.phone", "=", $request->phone)
-            ->where("tbl_customer.password", "=", $request->password)
+            ->where("tbl_customer.password", "=",  $passwordMd5)
 
             ->get();
 

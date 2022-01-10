@@ -10,11 +10,12 @@ class StaffController extends Controller
     //Lấy tất cả danh sách Staff
     public function login(Request $request)
     {
+        $passwordMd5 = md5($request->password);
         $result = DB::table("tbl_staff")
-            ->select('*')
-            ->where("tbl_staff.email", "=", $request->phone)
-            ->where("tbl_staff.password", "=", $request->password)
-            ->get();
+        ->where("tbl_staff.email", "=", $request->phone)
+        ->where("tbl_staff.password", "=", $passwordMd5)
+        ->get();
+        // dd($result);
         return response()->json($result);
     }
     public function index()
@@ -37,6 +38,7 @@ class StaffController extends Controller
     //Tạo một Staff
     public function store(Request $request)
     {
+        $passwordMd5 = md5($request->password);
 
         $rs = DB::table('tbl_staff')->where('email', '=', $request->email)->first();
         if ($rs === null) {
@@ -47,7 +49,7 @@ class StaffController extends Controller
                     "email" => $request->email,
                     "phone" => $request->phone,
                     "address" => $request->address,
-                    "password" => $request->password,
+                    "password" => $passwordMd5,
                     "role" => 1,
                     "image" => $request->image,
                 ]
@@ -84,6 +86,8 @@ class StaffController extends Controller
     //Cập nhật một Staff theo $id
     public function update(Request $request)
     {
+        $passwordMd5 = md5($request->password);
+
         DB::table('tbl_staff')
             ->where('id', $request->id)
             ->update(
@@ -92,7 +96,7 @@ class StaffController extends Controller
                     "email" => $request->email,
                     "phone" => $request->phone,
                     "address" => $request->address,
-                    "password" => $request->password,
+                    "password" => $passwordMd5,
 
                     "image" => $request->image,
                 ]
@@ -102,11 +106,13 @@ class StaffController extends Controller
     }
     public function updatePassword(Request $request)
     {
+        $passwordMd5 = md5($request->password);
+
         DB::table('tbl_staff')
             ->where('id', $request->id)
             ->update(
                 [
-                    "password" => $request->password,
+                    "password" => $passwordMd5,
                 ]
             );
         return response()->json($request);

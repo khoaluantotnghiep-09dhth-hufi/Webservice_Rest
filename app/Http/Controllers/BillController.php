@@ -10,7 +10,9 @@ class BillController extends Controller
     //Lấy tất cả danh sách Bill
     public function index()
     {
-        $result = DB::table('tbl_bill')->select('*')->get();
+        $result = DB::table('tbl_bill')->select('*')
+        ->orderBy('tbl_bill.order_date', 'DESC')
+        ->get();
         return response()->json($result);
     }
     public function indexDelivered()
