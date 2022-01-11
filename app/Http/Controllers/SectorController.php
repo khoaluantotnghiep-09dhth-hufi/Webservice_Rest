@@ -19,7 +19,7 @@ class SectorController extends Controller
                 'tbl_object.name as nameObject',
                 'tbl_sectors.id_object'
             )
-            ->orderBy('tbl_sectors.name', 'ASC')
+            ->orderBy('tbl_sectors.id', 'DESC')
             ->get();
         return response()->json($result);
     }

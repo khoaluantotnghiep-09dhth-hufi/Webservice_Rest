@@ -109,6 +109,7 @@ class BillController extends Controller
             )
             ->where('id_customer', '=', $id)
             ->where('status', '=', 1)
+         
             ->get();
         return response()->json($result);
     }

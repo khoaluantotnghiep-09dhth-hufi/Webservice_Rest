@@ -21,7 +21,7 @@ class NewsController extends Controller
                 'tbl_news.descriptionHTML',
                 'tbl_news.descriptionText'
             )
-            ->orderBy('tbl_news.title', 'DESC')
+            ->orderBy('tbl_news.date', 'DESC')
             ->get();
         return response()->json($result);
     }

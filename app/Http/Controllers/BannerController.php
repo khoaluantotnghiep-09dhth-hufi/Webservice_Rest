@@ -11,6 +11,7 @@ class BannerController extends Controller
      public function index()
      {
          $result = DB::table('tbl_banner')->select('*')
+         ->orderBy('tbl_banner.id', 'DESC')
          ->get();
          return response()->json($result);
      }
@@ -27,15 +28,14 @@ class BannerController extends Controller
          return response()->json($request);
      }
      //Lấy một Banner theo $id
-     public function show($id)
+     public function show(Request $request)
      {
-         $result = DB::table('tbl_banner')
-             ->select(
-                "*"
-                 )
-             ->where('id', '=', $id)
 
+         $result = DB::table('tbl_banner')
+         ->select('*')
+             ->where('tbl_banner.id', '=', $request->id)
              ->get();
+            //  dd($result);
          return response()->json($result);
      }
      //Cập Nhật một banner theo $id
@@ -53,9 +53,10 @@ class BannerController extends Controller
          return response()->json($request);
      }
      //Xóa một Color theo $id
-     public function destroy($id)
+     public function destroy(Request $request)
      {
-        $result=  DB::table('tbl_banner')->where('id', '=', $id)
+        $result=  DB::table('tbl_banner')
+         ->where('tbl_banner.id', '=', $request->id)
         ->delete();
          return response()->json($result);
      }

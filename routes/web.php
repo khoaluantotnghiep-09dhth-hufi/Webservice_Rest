@@ -28,9 +28,9 @@ $router->put('/rating/{id}', 'RatingController@update');
 $router->get('/', 'AuthController@index');
 //Banner
 $router->get('/banners', 'BannerController@index');
-$router->get('/banners/{id}', 'BannerController@show');
+$router->post('/get-update-banner', 'BannerController@show');
 $router->post('/banners', 'BannerController@store');
-$router->delete('/banners/{id}', 'BannerController@destroy');
+$router->post('/delete-banner', 'BannerController@destroy');
 $router->put('/banners/{id}', 'BannerController@update');
 //Category
 $router->get('/categories', 'CategoryController@index');
@@ -143,7 +143,7 @@ $router->post('/customers', 'CustomerController@store');
 $router->post('/customers_client', 'CustomerClientController@store');
 $router->put('/customers/{id}', 'CustomerController@update');
 $router->put('/customers_client/{id}', 'CustomerClientController@update');
-$router->delete('/customers/{id}', 'CustomerController@destroy');
+$router->post('/delete-customers', 'CustomerController@destroy');
 //staff
 $router->post('/login-admin', 'StaffController@login');
 $router->get('/staffs', 'StaffController@index');

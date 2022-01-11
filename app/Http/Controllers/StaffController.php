@@ -24,7 +24,7 @@ class StaffController extends Controller
             ->select(
                 '*'
             )
-            ->orderBy('tbl_staff.id', 'ASC')
+            ->orderBy('tbl_staff.id', 'DESC')
             ->get();
         return response()->json($result);
     }

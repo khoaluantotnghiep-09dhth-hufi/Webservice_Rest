@@ -42,6 +42,7 @@ class Bill_CustomerController extends Controller
         $result = DB::table('tbl_bill')
             ->select('*')
             ->where('id_customer', '=', $id)
+            ->orderBy('tbl_bill.order_date', 'DESC')
             ->get();
         return response()->json($result);
 
