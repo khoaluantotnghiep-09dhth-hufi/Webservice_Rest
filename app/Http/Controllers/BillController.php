@@ -11,8 +11,8 @@ class BillController extends Controller
     public function index()
     {
         $result = DB::table('tbl_bill')->select('*')
-        ->orderBy('tbl_bill.order_date', 'DESC')
-        ->get();
+            ->orderBy('tbl_bill.order_date', 'DESC')
+            ->get();
         return response()->json($result);
     }
     public function indexDelivered()
@@ -139,12 +139,12 @@ class BillController extends Controller
     }
     public function updateStatusToExchange(Request $request)
     {
-$statusID=5;
-       $result= DB::table('tbl_bill')
+        $statusID = 5;
+        $result = DB::table('tbl_bill')
             ->where('tbl_bill.id', $request->id)
             ->update(
                 [
-                    'status'=>$statusID
+                    'status' => $statusID,
                 ]
 
             );
