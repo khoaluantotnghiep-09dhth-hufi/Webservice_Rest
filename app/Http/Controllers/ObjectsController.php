@@ -12,7 +12,7 @@ class ObjectsController extends Controller
     {
 
         $result = DB::table('tbl_object')
-        ->orderBy('tbl_object.id', 'DESC')
+        ->orderBy('tbl_object.id', 'ASC')
 
             ->select('*')
             ->get();

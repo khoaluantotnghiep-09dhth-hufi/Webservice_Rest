@@ -12,6 +12,7 @@ class BillController extends Controller
     {
         $result = DB::table('tbl_bill')->select('*')
             ->orderBy('tbl_bill.order_date', 'DESC')
+            ->orderBy('tbl_bill.status', 'ASC')
             ->get();
         return response()->json($result);
     }
@@ -109,7 +110,7 @@ class BillController extends Controller
             )
             ->where('id_customer', '=', $id)
             ->where('status', '=', 1)
-         
+
             ->get();
         return response()->json($result);
     }
