@@ -102,6 +102,13 @@ class CustomerController extends Controller
             );
         return response()->json($request);
     }
+    public function destroy($id)
+    {
+        DB::table('tbl_customer')
+            ->where('id', '=', $id)
+            ->delete();
+        return response()->json($id);
+    }
     //Xóa một Customer theo $id
 //     public function destroy(Request $request)
 //     {

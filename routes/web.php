@@ -143,7 +143,7 @@ $router->post('/customers', 'CustomerController@store');
 $router->post('/customers_client', 'CustomerClientController@store');
 $router->put('/customers/{id}', 'CustomerController@update');
 $router->put('/customers_client/{id}', 'CustomerClientController@update');
-$router->post('/delete-customers', 'CustomerController@destroy');
+$router->delete('/delete-customers/{id}', 'CustomerController@destroy');
 //staff
 $router->post('/login-admin', 'StaffController@login');
 $router->get('/staffs', 'StaffController@index');
