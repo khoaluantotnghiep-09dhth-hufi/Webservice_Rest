@@ -201,7 +201,11 @@ $router->put('/exchange-bill-status/{id}', 'BillExchangeController@updateExchang
 
 //Notification
 $router->get('/notifications', 'NotificationController@index');
+$router->get('/reset-notifications', 'NotificationController@reset');
+
 $router->post('/notifications', 'NotificationController@store');
+$router->delete('/notifications/{id}', 'NotificationController@destroy');
+
 
 //acb
 $router->get('/exchange-bill-info', 'BillExchangeController@index');

@@ -14,6 +14,7 @@ class NotificationController extends Controller
         $result = DB::table('tbl_notification')
 
             ->select('*')
+            ->orderBy('tbl_notification.time', 'ASC')
             ->get();
         return response()->json($result);
     }
@@ -57,7 +58,13 @@ class NotificationController extends Controller
     //Xóa một Object theo $id
     public function destroy($id)
     {
-        DB::table('tbl_object')->where('id', '=', $id)->delete();
+        DB::table('tbl_notification')->where('id', '=', $id)->delete();
         return response()->json($id);
+    }
+
+    public function reset()
+    {
+        DB::table('tbl_notification')->truncate();
+        return response()->json("success");
     }
 }
